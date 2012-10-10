@@ -1,2 +1,197 @@
-// begin:60ea
-// end:60ea
+// begin:acd4
+__HITs = {
+	"sandbox:2UHXR24SMEZZA3RVWU0UBP9Y9SR1IW" : {
+		"url" : "https://workersandbox.mturk.com/mturk/preview?groupId=2SKI8IUB2YU9G0Q33S23O0FBJU77J9"
+	},
+	"sandbox:236FXRDS4IC1MFMY7Q6M41A2OFVYVN" : {
+		"url" : "https://workersandbox.mturk.com/mturk/preview?groupId=24N8LZ6R70G5ZQHOIQUVH7WSSEC7ND"
+	},
+	"sandbox:2359U8P9Y38T4D6TDZLYLM0JZUDXGR" : {
+		"url" : "https://workersandbox.mturk.com/mturk/preview?groupId=2C1ER9Y8TNKIUG1XFR6HV2OM0A57U5"
+	}
+}
+__S3_Objects = {
+}
+__stackFrames = {
+	"for-real" : {
+		"sequencialFrames" : [
+			{
+				"creationTime" : 1.349849138504E12,
+				"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+				"returnValue" : "2UHXR24SMEZZA3RVWU0UBP9Y9SR1IW",
+				"returnTime" : 1.349849138717E12,
+				"printOutput" : "created HIT: 2UHXR24SMEZZA3RVWU0UBP9Y9SR1IW\n        url: https://workersandbox.mturk.com/mturk/preview?groupId=2SKI8IUB2YU9G0Q33S23O0FBJU77J9\n"
+			},
+			{
+				"creationTime" : 1.349849138718E12,
+				"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            stop();\n        }\n    }\n    var hit = mturk.getHIT(hitId);\n    if (!hit.done) {\n        stop();\n    }\n    verbosePrint(\"hit completed: \" + hitId);\n    return hit;\n}\n",
+				"returnValue" : {
+					"hitId" : "2UHXR24SMEZZA3RVWU0UBP9Y9SR1IW",
+					"hitTypeId" : "2SKI8IUB2YU9G0Q33S23O0FBJU77J9",
+					"title" : "Identify Facts",
+					"description" : "Identify factual claims from a political statement",
+					"keywords" : null,
+					"reward" : 0.01,
+					"question" : "<QuestionForm xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2005-10-01/QuestionForm.xsd\">\n  <Question>\n    <QuestionIdentifier>identifyFacts1</QuestionIdentifier>\n    <IsRequired>true</IsRequired>\n    <QuestionContent>\n      <FormattedContent><![CDATA[<p><strong>Please identify up 3-5 factual claims in the below excerpt. These will be reviewed for their accuracy. \n                    Copy-paste these claims into each of the text boxes below.</strong></p>]]></FormattedContent>\n      <Text>First, we\'ve got to improve our education system. And we\'ve made enormous progress drawing on ideas both from Democrats and Republicans that are already starting to show gains in some of the toughest-to- deal-with schools. We\'ve got a program called Race to the Top that has prompted reforms in 46 states around the country, raising standards, improving how we train teachers. So now I want to hire another hundred thousand new math and science teachers and create 2 million more slots in our community colleges so that people can get trained for the jobs that are out there right now. And I want to make sure that we keep tuition low for our young people.</Text>\n      <Text>Claim 1</Text>\n    </QuestionContent>\n    <AnswerSpecification>\n      <FreeTextAnswer>\n        <Constraints>\n          <Length maxLength=\"500\" minLength=\"2\"/>\n          <AnswerFormatRegex errorText=\"The content cannot be blank.\" regex=\"\\S\"/>\n        </Constraints>\n        <NumberOfLinesSuggestion>2</NumberOfLinesSuggestion>\n      </FreeTextAnswer>\n    </AnswerSpecification>\n  </Question>\n  <Question>\n    <QuestionIdentifier>identifyFacts2</QuestionIdentifier>\n    <IsRequired>true</IsRequired>\n    <QuestionContent>\n      <Text>Claim 2</Text>\n    </QuestionContent>\n    <AnswerSpecification>\n      <FreeTextAnswer>\n        <Constraints>\n          <Length maxLength=\"500\" minLength=\"2\"/>\n          <AnswerFormatRegex errorText=\"The content cannot be blank.\" regex=\"\\S\"/>\n        </Constraints>\n        <NumberOfLinesSuggestion>2</NumberOfLinesSuggestion>\n      </FreeTextAnswer>\n    </AnswerSpecification>\n  </Question>\n  <Question>\n    <QuestionIdentifier>identifyFacts3</QuestionIdentifier>\n    <IsRequired>true</IsRequired>\n    <QuestionContent>\n      <Text>Claim 3</Text>\n    </QuestionContent>\n    <AnswerSpecification>\n      <FreeTextAnswer>\n        <Constraints>\n          <Length maxLength=\"500\" minLength=\"2\"/>\n          <AnswerFormatRegex errorText=\"The content cannot be blank.\" regex=\"\\S\"/>\n        </Constraints>\n        <NumberOfLinesSuggestion>2</NumberOfLinesSuggestion>\n      </FreeTextAnswer>\n    </AnswerSpecification>\n  </Question>\n  <Question>\n    <QuestionIdentifier>identifyFacts4</QuestionIdentifier>\n    <IsRequired>false</IsRequired>\n    <QuestionContent>\n      <Text>Claim 4</Text>\n    </QuestionContent>\n    <AnswerSpecification>\n      <FreeTextAnswer>\n        <Constraints>\n          <Length maxLength=\"500\"/>\n        </Constraints>\n        <NumberOfLinesSuggestion>2</NumberOfLinesSuggestion>\n      </FreeTextAnswer>\n    </AnswerSpecification>\n  </Question>\n  <Question>\n    <QuestionIdentifier>identifyFacts5</QuestionIdentifier>\n    <IsRequired>false</IsRequired>\n    <QuestionContent>\n      <Text>Claim 5</Text>\n    </QuestionContent>\n    <AnswerSpecification>\n      <FreeTextAnswer>\n        <Constraints>\n          <Length maxLength=\"500\"/>\n        </Constraints>\n        <NumberOfLinesSuggestion>2</NumberOfLinesSuggestion>\n      </FreeTextAnswer>\n    </AnswerSpecification>\n  </Question>\n</QuestionForm>",
+					"maxAssignments" : 1,
+					"assignmentDurationInSeconds" : 300,
+					"autoApprovalDelayInSeconds" : 2592000,
+					"requesterAnnotation" : null,
+					"hitStatus" : "Reviewable",
+					"hitReviewStatus" : "NotReviewed",
+					"creationTime" : 1.349849138E12,
+					"expiration" : 1.350453938E12,
+					"assignments" : [
+						{
+							"assignmentId" : "280TNKIMZSM5SWQ3CVD0SGVF35WCZ2",
+							"workerId" : "A3FIEQZR1RZ0W6",
+							"hitId" : "2UHXR24SMEZZA3RVWU0UBP9Y9SR1IW",
+							"assignmentStatus" : "Submitted",
+							"autoApprovalTime" : 1.352441151E12,
+							"acceptTime" : 1.349849144E12,
+							"submitTime" : 1.349849151E12,
+							"answer" : {
+								"identifyFacts1" : "asfd",
+								"identifyFacts2" : "fuck",
+								"identifyFacts3" : "this",
+								"identifyFacts4" : "shit",
+								"identifyFacts5" : ""
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : null,
+							"deadline" : null,
+							"rejectionTime" : null
+						}
+					],
+					"done" : true
+				},
+				"returnTime" : 1.349849156432E12,
+				"printOutput" : "hit completed: 2UHXR24SMEZZA3RVWU0UBP9Y9SR1IW\n"
+			},
+			{
+				"creationTime" : 1.349849156438E12,
+				"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+				"returnValue" : "236FXRDS4IC1MFMY7Q6M41A2OFVYVN",
+				"returnTime" : 1.349849156686E12,
+				"printOutput" : "created HIT: 236FXRDS4IC1MFMY7Q6M41A2OFVYVN\n        url: https://workersandbox.mturk.com/mturk/preview?groupId=24N8LZ6R70G5ZQHOIQUVH7WSSEC7ND\n"
+			},
+			{
+				"creationTime" : 1.349849156687E12,
+				"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            stop();\n        }\n    }\n    var hit = mturk.getHIT(hitId);\n    if (!hit.done) {\n        stop();\n    }\n    verbosePrint(\"hit completed: \" + hitId);\n    return hit;\n}\n",
+				"returnValue" : {
+					"hitId" : "236FXRDS4IC1MFMY7Q6M41A2OFVYVN",
+					"hitTypeId" : "24N8LZ6R70G5ZQHOIQUVH7WSSEC7ND",
+					"title" : "Vote on Factual Claims",
+					"description" : "Decide if a political statement is a factual claim",
+					"keywords" : null,
+					"reward" : 0.02,
+					"question" : "<QuestionForm xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2005-10-01/QuestionForm.xsd\">\n  <Question>\n    <QuestionIdentifier>voteFacts0</QuestionIdentifier>\n    <IsRequired>true</IsRequired>\n    <QuestionContent>\n      <FormattedContent><![CDATA[<p><strong>Is this a factual claim?</strong></p>]]></FormattedContent>\n      <Text>asfd</Text>\n    </QuestionContent>\n    <AnswerSpecification>\n      <SelectionAnswer>\n        <Selections>\n          <Selection>\n            <SelectionIdentifier>yes</SelectionIdentifier>\n            <Text>Yes</Text>\n          </Selection>\n          <Selection>\n            <SelectionIdentifier>no</SelectionIdentifier>\n            <Text>No</Text>\n          </Selection>\n        </Selections>\n      </SelectionAnswer>\n    </AnswerSpecification>\n  </Question>\n  <Question>\n    <QuestionIdentifier>voteFacts1</QuestionIdentifier>\n    <IsRequired>true</IsRequired>\n    <QuestionContent>\n      <FormattedContent><![CDATA[<p><strong>Is this a factual claim?</strong></p>]]></FormattedContent>\n      <Text>fuck</Text>\n    </QuestionContent>\n    <AnswerSpecification>\n      <SelectionAnswer>\n        <Selections>\n          <Selection>\n            <SelectionIdentifier>yes</SelectionIdentifier>\n            <Text>Yes</Text>\n          </Selection>\n          <Selection>\n            <SelectionIdentifier>no</SelectionIdentifier>\n            <Text>No</Text>\n          </Selection>\n        </Selections>\n      </SelectionAnswer>\n    </AnswerSpecification>\n  </Question>\n  <Question>\n    <QuestionIdentifier>voteFacts2</QuestionIdentifier>\n    <IsRequired>true</IsRequired>\n    <QuestionContent>\n      <FormattedContent><![CDATA[<p><strong>Is this a factual claim?</strong></p>]]></FormattedContent>\n      <Text>this</Text>\n    </QuestionContent>\n    <AnswerSpecification>\n      <SelectionAnswer>\n        <Selections>\n          <Selection>\n            <SelectionIdentifier>yes</SelectionIdentifier>\n            <Text>Yes</Text>\n          </Selection>\n          <Selection>\n            <SelectionIdentifier>no</SelectionIdentifier>\n            <Text>No</Text>\n          </Selection>\n        </Selections>\n      </SelectionAnswer>\n    </AnswerSpecification>\n  </Question>\n  <Question>\n    <QuestionIdentifier>voteFacts3</QuestionIdentifier>\n    <IsRequired>true</IsRequired>\n    <QuestionContent>\n      <FormattedContent><![CDATA[<p><strong>Is this a factual claim?</strong></p>]]></FormattedContent>\n      <Text>shit</Text>\n    </QuestionContent>\n    <AnswerSpecification>\n      <SelectionAnswer>\n        <Selections>\n          <Selection>\n            <SelectionIdentifier>yes</SelectionIdentifier>\n            <Text>Yes</Text>\n          </Selection>\n          <Selection>\n            <SelectionIdentifier>no</SelectionIdentifier>\n            <Text>No</Text>\n          </Selection>\n        </Selections>\n      </SelectionAnswer>\n    </AnswerSpecification>\n  </Question>\n</QuestionForm>",
+					"maxAssignments" : 2,
+					"assignmentDurationInSeconds" : 300,
+					"autoApprovalDelayInSeconds" : 2592000,
+					"requesterAnnotation" : null,
+					"hitStatus" : "Reviewable",
+					"hitReviewStatus" : "NotReviewed",
+					"creationTime" : 1.349849156E12,
+					"expiration" : 1.350453956E12,
+					"assignments" : [
+						{
+							"assignmentId" : "2BPERSQV66RLXYR4DOMWDVKI6PXB3X",
+							"workerId" : "A3FIEQZR1RZ0W6",
+							"hitId" : "236FXRDS4IC1MFMY7Q6M41A2OFVYVN",
+							"assignmentStatus" : "Submitted",
+							"autoApprovalTime" : 1.352441194E12,
+							"acceptTime" : 1.349849163E12,
+							"submitTime" : 1.349849194E12,
+							"answer" : {
+								"voteFacts0" : [
+									"yes"
+								],
+								"voteFacts1" : [
+									"yes"
+								],
+								"voteFacts2" : [
+									"no"
+								],
+								"voteFacts3" : [
+									"no"
+								]
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : null,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "2JR6KW4ZMAZHP80WPXROQNVRHOU8H2",
+							"workerId" : "A1SWO5RSYK4LH4",
+							"hitId" : "236FXRDS4IC1MFMY7Q6M41A2OFVYVN",
+							"assignmentStatus" : "Submitted",
+							"autoApprovalTime" : 1.352441229E12,
+							"acceptTime" : 1.349849216E12,
+							"submitTime" : 1.349849229E12,
+							"answer" : {
+								"voteFacts0" : [
+									"yes"
+								],
+								"voteFacts1" : [
+									"no"
+								],
+								"voteFacts2" : [
+									"yes"
+								],
+								"voteFacts3" : [
+									"no"
+								]
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : null,
+							"deadline" : null,
+							"rejectionTime" : null
+						}
+					],
+					"done" : true
+				},
+				"returnTime" : 1.349849234527E12,
+				"printOutput" : "hit completed: 236FXRDS4IC1MFMY7Q6M41A2OFVYVN\n"
+			},
+			{
+				"creationTime" : 1.349849234529E12,
+				"onceFunc" : "\nfunction () {\n    return mturk.approveAssignmentRaw(assignment, reason);\n}\n",
+				"returnValue" : undefined,
+				"returnTime" : 1.349849319226E12,
+				"printOutput" : "approved assignment 2BPERSQV66RLXYR4DOMWDVKI6PXB3X\n"
+			},
+			{
+				"creationTime" : 1.349849319228E12,
+				"onceFunc" : "\nfunction () {\n    return mturk.approveAssignmentRaw(assignment, reason);\n}\n",
+				"returnValue" : undefined,
+				"returnTime" : 1.349849319344E12,
+				"printOutput" : "approved assignment 2JR6KW4ZMAZHP80WPXROQNVRHOU8H2\n"
+			},
+			{
+				"creationTime" : 1.349849319346E12,
+				"onceFunc" : "\nfunction () {\n    return mturk.approveAssignmentRaw(assignment, reason);\n}\n",
+				"returnValue" : undefined,
+				"returnTime" : 1.349849319453E12,
+				"printOutput" : "approved assignment 280TNKIMZSM5SWQ3CVD0SGVF35WCZ2\n"
+			},
+			{
+				"creationTime" : 1.349849638921E12,
+				"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+				"returnValue" : "2359U8P9Y38T4D6TDZLYLM0JZUDXGR",
+				"returnTime" : 1.349849639367E12,
+				"printOutput" : "created HIT: 2359U8P9Y38T4D6TDZLYLM0JZUDXGR\n        url: https://workersandbox.mturk.com/mturk/preview?groupId=2C1ER9Y8TNKIUG1XFR6HV2OM0A57U5\n"
+			},
+			{
+				"creationTime" : 1.349849639368E12,
+				"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            stop();\n        }\n    }\n    var hit = mturk.getHIT(hitId);\n    if (!hit.done) {\n        stop();\n    }\n    verbosePrint(\"hit completed: \" + hitId);\n    return hit;\n}\n"
+			}
+		]
+	}
+}
+__safetyCounters = {
+	"moneySpent" : 0.15000000000000002,
+	"hitsCreated" : 3
+}
+// end:acd4
