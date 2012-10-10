@@ -36,7 +36,7 @@ foreach(facts, function(fact) {
 })
 
 // process sources
-// process(sources)
+// print(process(sources, facts))
 
 
 
@@ -208,7 +208,6 @@ function checkFacts(facts, hit) {
 
     for (var i = 0; i < sums.length; i++) {
         if (sums[i] > 0) {
-            print("IN")
             result.push(facts[i])
         }
     }
@@ -287,8 +286,9 @@ function createSourceHIT(fact, author, sourceCost) {
 }
 
 // helper function to extract source info
-function process(sources) {
+function process(sources, facts) {
     var section = new Array()
+    var count = 0
 
     foreach(sources, function(hit) {
         var links = new Array()
@@ -301,9 +301,9 @@ function process(sources) {
             labels.push(assign.answer.sourceValidity)
         })
 
-        section.push({ fact: links: link, notes: note, labels: label })
+        section.push({ fact: facts[count], links: link, notes: note, labels: label })
+        count += 1
     })
-
 
     return section
 }
