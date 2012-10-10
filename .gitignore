@@ -1,0 +1,5 @@
+# Ignore backed up databases
+code.js.database.old[0-9]
+
+# Ignore Mac shit
+.DS_Store
