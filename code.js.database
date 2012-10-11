@@ -1,4 +1,4 @@
-// begin:1b41
+// begin:c170
 __HITs = {
 	"real:2MQB727M0IGFSYMCG56S3F4VKHHDYC" : {
 		"url" : "https://www.mturk.com/mturk/preview?groupId=2HHHOVR14IXKWJUKCO5C4A6X30287I"
@@ -25,6 +25,12 @@ __HITs = {
 		"url" : "https://www.mturk.com/mturk/preview?groupId=2CAVKCJ011K2FLSIJRHWE18N4888A9"
 	},
 	"real:2BXJ51Y7QEOZNFZ3BJJTUOFXT6KCFJ" : {
+		"url" : "https://www.mturk.com/mturk/preview?groupId=2CAVKCJ011K2FLSIJRHWE18N4888A9"
+	},
+	"real:2YWCWA6X3YOCKW9NZCBXXTINKBPNOY" : {
+		"url" : "https://www.mturk.com/mturk/preview?groupId=2CAVKCJ011K2FLSIJRHWE18N4888A9"
+	},
+	"real:2GRRNDWIOV1SF9WEN07U93YD11GWHB" : {
 		"url" : "https://www.mturk.com/mturk/preview?groupId=2CAVKCJ011K2FLSIJRHWE18N4888A9"
 	}
 }
@@ -819,13 +825,229 @@ __stackFrames = {
 			},
 			{
 				"creationTime" : 1.349965119362E12,
+				"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            stop();\n        }\n    }\n    var hit = mturk.getHIT(hitId);\n    if (!hit.done) {\n        stop();\n    }\n    verbosePrint(\"hit completed: \" + hitId);\n    return hit;\n}\n",
+				"returnValue" : {
+					"hitId" : "2BXJ51Y7QEOZNFZ3BJJTUOFXT6KCFJ",
+					"hitTypeId" : "2CAVKCJ011K2FLSIJRHWE18N4888A9",
+					"title" : "Vote on whether a political claim is truthful",
+					"description" : "Determine the validity of political sources and fact-check a political claim",
+					"keywords" : null,
+					"reward" : 0.4,
+					"question" : "<QuestionForm xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2005-10-01/QuestionForm.xsd\">\n  <Overview>\n    <FormattedContent><![CDATA[<p><strong>Consider the below sources which either prove or disprove this factual claim:</strong></p>]]></FormattedContent>\n    <Text>Mitt Romney: I will not cut our commitment to our military</Text>\n  </Overview>\n  <Question>\n    <QuestionIdentifier>voteFacts0</QuestionIdentifier>\n    <IsRequired>true</IsRequired>\n    <QuestionContent>\n      <Text>Source 1: Prove</Text>\n      <Text>Link: http://washington.cbslocal.com/2012/09/28/romney-idea-of-cutting-our-military-is-unthinkable/</Text>\n      <Text>Description: \u201cThe idea of cutting our military is unthinkable and devastating. And when I become president we will not,\u201d declared the challenger, struggling to reverse a slide in opinion polls.</Text>\n      <Text>Please visit the source URL and investigate the validity of the source. \n                        How strong is this piece of evidence, on a scale of 1 to 10 from weak to strong?</Text>\n    </QuestionContent>\n    <AnswerSpecification>\n      <FreeTextAnswer>\n        <Constraints>\n          <IsNumeric maxValue=\"10\" minValue=\"1\"/>\n        </Constraints>\n        <NumberOfLinesSuggestion>1</NumberOfLinesSuggestion>\n      </FreeTextAnswer>\n    </AnswerSpecification>\n  </Question>\n  <Question>\n    <QuestionIdentifier>voteFacts1</QuestionIdentifier>\n    <IsRequired>true</IsRequired>\n    <QuestionContent>\n      <Text>Source 2: Prove</Text>\n      <Text>Link: http://www.ontheissues.org/2012/Mitt_Romney_Homeland_Security.htm</Text>\n      <Text>Description: Romnay says: \"We have a responsibility to protect the lives and liberties of our people, and that means a military second to none. I do not believe in cutting our military. I believe in maintaining the strength of America\'s military. \"</Text>\n      <Text>Please visit the source URL and investigate the validity of the source. \n                        How strong is this piece of evidence, on a scale of 1 to 10 from weak to strong?</Text>\n    </QuestionContent>\n    <AnswerSpecification>\n      <FreeTextAnswer>\n        <Constraints>\n          <IsNumeric maxValue=\"10\" minValue=\"1\"/>\n        </Constraints>\n        <NumberOfLinesSuggestion>1</NumberOfLinesSuggestion>\n      </FreeTextAnswer>\n    </AnswerSpecification>\n  </Question>\n  <Question>\n    <QuestionIdentifier>voteFactsDup1</QuestionIdentifier>\n    <IsRequired>true</IsRequired>\n    <QuestionContent>\n      <Text>Is this source a duplicate of a previous source?</Text>\n    </QuestionContent>\n    <AnswerSpecification>\n      <SelectionAnswer>\n        <Selections>\n          <Selection>\n            <SelectionIdentifier>Yes</SelectionIdentifier>\n            <Text>Yes</Text>\n          </Selection>\n          <Selection>\n            <SelectionIdentifier>No</SelectionIdentifier>\n            <Text>No</Text>\n          </Selection>\n        </Selections>\n      </SelectionAnswer>\n    </AnswerSpecification>\n  </Question>\n  <Question>\n    <QuestionIdentifier>voteFacts2</QuestionIdentifier>\n    <IsRequired>true</IsRequired>\n    <QuestionContent>\n      <Text>Source 3: Disprove</Text>\n      <Text>Link: http://www.nvf.org/news/debate-features-little-talk-about-military-no-mention-veterans</Text>\n      <Text>Description: \u201cIf the president is reelected, you\u2019ll see dramatic cuts to our military,\u201d Romney said. \u201cThe secretary of defense has said these would be even devastating. I will not cut our commitment to our military.\u201d Democrats and Republicans in Congress approved that plan before Obama signed it into law last year, but both parties have spent the last few months blaming the other for advancing the plan and for not finding an alternative.</Text>\n      <Text>Please visit the source URL and investigate the validity of the source. \n                        How strong is this piece of evidence, on a scale of 1 to 10 from weak to strong?</Text>\n    </QuestionContent>\n    <AnswerSpecification>\n      <FreeTextAnswer>\n        <Constraints>\n          <IsNumeric maxValue=\"10\" minValue=\"1\"/>\n        </Constraints>\n        <NumberOfLinesSuggestion>1</NumberOfLinesSuggestion>\n      </FreeTextAnswer>\n    </AnswerSpecification>\n  </Question>\n  <Question>\n    <QuestionIdentifier>voteFactsDup2</QuestionIdentifier>\n    <IsRequired>true</IsRequired>\n    <QuestionContent>\n      <Text>Is this source a duplicate of a previous source?</Text>\n    </QuestionContent>\n    <AnswerSpecification>\n      <SelectionAnswer>\n        <Selections>\n          <Selection>\n            <SelectionIdentifier>Yes</SelectionIdentifier>\n            <Text>Yes</Text>\n          </Selection>\n          <Selection>\n            <SelectionIdentifier>No</SelectionIdentifier>\n            <Text>No</Text>\n          </Selection>\n        </Selections>\n      </SelectionAnswer>\n    </AnswerSpecification>\n  </Question>\n  <Question>\n    <QuestionIdentifier>voteFactsFinal</QuestionIdentifier>\n    <IsRequired>true</IsRequired>\n    <QuestionContent>\n      <Text>After considering each of the above sources, how true is this factual claim, \n                on a scale of 1 to 10 from false to true?</Text>\n    </QuestionContent>\n    <AnswerSpecification>\n      <FreeTextAnswer>\n        <Constraints>\n          <IsNumeric maxValue=\"10\" minValue=\"1\"/>\n        </Constraints>\n        <NumberOfLinesSuggestion>1</NumberOfLinesSuggestion>\n      </FreeTextAnswer>\n    </AnswerSpecification>\n  </Question>\n</QuestionForm>",
+					"maxAssignments" : 3,
+					"assignmentDurationInSeconds" : 600,
+					"autoApprovalDelayInSeconds" : 2592000,
+					"requesterAnnotation" : null,
+					"hitStatus" : "Reviewable",
+					"hitReviewStatus" : "NotReviewed",
+					"creationTime" : 1.349965119E12,
+					"expiration" : 1.350569919E12,
+					"assignments" : [
+						{
+							"assignmentId" : "2UXUFJ51Y7QEWGO90ZSC0TMON8XDAN",
+							"workerId" : "AO3XB5I5QNNUI",
+							"hitId" : "2BXJ51Y7QEOZNFZ3BJJTUOFXT6KCFJ",
+							"assignmentStatus" : "Submitted",
+							"autoApprovalTime" : 1.352557399E12,
+							"acceptTime" : 1.34996517E12,
+							"submitTime" : 1.349965399E12,
+							"answer" : {
+								"voteFacts0" : "9",
+								"voteFacts1" : "10",
+								"voteFactsDup1" : [
+									"No"
+								],
+								"voteFacts2" : "10",
+								"voteFactsDup2" : [
+									"No"
+								],
+								"voteFactsFinal" : "10"
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : null,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "2ESSPW1INMHG67DUDU1BEBFMNQV4HD",
+							"workerId" : "A16HZP5WF2GEDX",
+							"hitId" : "2BXJ51Y7QEOZNFZ3BJJTUOFXT6KCFJ",
+							"assignmentStatus" : "Submitted",
+							"autoApprovalTime" : 1.352557684E12,
+							"acceptTime" : 1.349965616E12,
+							"submitTime" : 1.349965684E12,
+							"answer" : {
+								"voteFacts0" : "9",
+								"voteFacts1" : "7",
+								"voteFactsDup1" : [
+									"No"
+								],
+								"voteFacts2" : "7",
+								"voteFactsDup2" : [
+									"No"
+								],
+								"voteFactsFinal" : "8"
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : null,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "2Z9IT3HVWAVKQNBYTXT1F2Z9H1OEM2",
+							"workerId" : "A2LL4JJJPB05VE",
+							"hitId" : "2BXJ51Y7QEOZNFZ3BJJTUOFXT6KCFJ",
+							"assignmentStatus" : "Submitted",
+							"autoApprovalTime" : 1.352558045E12,
+							"acceptTime" : 1.349965768E12,
+							"submitTime" : 1.349966045E12,
+							"answer" : {
+								"voteFacts0" : "3",
+								"voteFacts1" : "4",
+								"voteFactsDup1" : [
+									"No"
+								],
+								"voteFacts2" : "6",
+								"voteFactsDup2" : [
+									"No"
+								],
+								"voteFactsFinal" : "7"
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : null,
+							"deadline" : null,
+							"rejectionTime" : null
+						}
+					],
+					"done" : true
+				},
+				"returnTime" : 1.349966087709E12,
+				"printOutput" : "hit completed: 2BXJ51Y7QEOZNFZ3BJJTUOFXT6KCFJ\n"
+			},
+			{
+				"creationTime" : 1.349966087715E12,
+				"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+				"returnValue" : "2YWCWA6X3YOCKW9NZCBXXTINKBPNOY",
+				"returnTime" : 1.349966087911E12,
+				"printOutput" : "created HIT: 2YWCWA6X3YOCKW9NZCBXXTINKBPNOY\n        url: https://www.mturk.com/mturk/preview?groupId=2CAVKCJ011K2FLSIJRHWE18N4888A9\n"
+			},
+			{
+				"creationTime" : 1.349966087912E12,
+				"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            stop();\n        }\n    }\n    var hit = mturk.getHIT(hitId);\n    if (!hit.done) {\n        stop();\n    }\n    verbosePrint(\"hit completed: \" + hitId);\n    return hit;\n}\n",
+				"returnValue" : {
+					"hitId" : "2YWCWA6X3YOCKW9NZCBXXTINKBPNOY",
+					"hitTypeId" : "2CAVKCJ011K2FLSIJRHWE18N4888A9",
+					"title" : "Vote on whether a political claim is truthful",
+					"description" : "Determine the validity of political sources and fact-check a political claim",
+					"keywords" : null,
+					"reward" : 0.4,
+					"question" : "<QuestionForm xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2005-10-01/QuestionForm.xsd\">\n  <Overview>\n    <FormattedContent><![CDATA[<p><strong>Consider the below sources which either prove or disprove this factual claim:</strong></p>]]></FormattedContent>\n    <Text>Mitt Romney: I put in place in my own state and allow each state to craft their own programs to get people insured</Text>\n  </Overview>\n  <Question>\n    <QuestionIdentifier>voteFacts0</QuestionIdentifier>\n    <IsRequired>true</IsRequired>\n    <QuestionContent>\n      <Text>Source 1: Prove</Text>\n      <Text>Link: http://rapgenius.com/Barack-obama-first-presidential-debate-of-2012-lyrics#lyric</Text>\n      <Text>Description: If I\'m elected we won\'t have Obama. We\'ll put in place the kind of principles that I put in place in my own state and allow each state to craft their own programs to get people insured and we\'ll focus on getting the cost of health care down.</Text>\n      <Text>Please visit the source URL and investigate the validity of the source. \n                        How strong is this piece of evidence, on a scale of 1 to 10 from weak to strong?</Text>\n    </QuestionContent>\n    <AnswerSpecification>\n      <FreeTextAnswer>\n        <Constraints>\n          <IsNumeric maxValue=\"10\" minValue=\"1\"/>\n        </Constraints>\n        <NumberOfLinesSuggestion>1</NumberOfLinesSuggestion>\n      </FreeTextAnswer>\n    </AnswerSpecification>\n  </Question>\n  <Question>\n    <QuestionIdentifier>voteFacts1</QuestionIdentifier>\n    <IsRequired>true</IsRequired>\n    <QuestionContent>\n      <Text>Source 2: Disprove</Text>\n      <Text>Link: http://thinkprogress.org/health/2012/10/04/958051/romney-misrepresents-health-plan/?mobile=nc</Text>\n      <Text>Description: Notice that Romney suggests that his plan will protect consumers by imposing government mandates, and then he proceeds to slam Obamacare for imposing government mandates.</Text>\n      <Text>Please visit the source URL and investigate the validity of the source. \n                        How strong is this piece of evidence, on a scale of 1 to 10 from weak to strong?</Text>\n    </QuestionContent>\n    <AnswerSpecification>\n      <FreeTextAnswer>\n        <Constraints>\n          <IsNumeric maxValue=\"10\" minValue=\"1\"/>\n        </Constraints>\n        <NumberOfLinesSuggestion>1</NumberOfLinesSuggestion>\n      </FreeTextAnswer>\n    </AnswerSpecification>\n  </Question>\n  <Question>\n    <QuestionIdentifier>voteFactsDup1</QuestionIdentifier>\n    <IsRequired>true</IsRequired>\n    <QuestionContent>\n      <Text>Is this source a duplicate of a previous source?</Text>\n    </QuestionContent>\n    <AnswerSpecification>\n      <SelectionAnswer>\n        <Selections>\n          <Selection>\n            <SelectionIdentifier>Yes</SelectionIdentifier>\n            <Text>Yes</Text>\n          </Selection>\n          <Selection>\n            <SelectionIdentifier>No</SelectionIdentifier>\n            <Text>No</Text>\n          </Selection>\n        </Selections>\n      </SelectionAnswer>\n    </AnswerSpecification>\n  </Question>\n  <Question>\n    <QuestionIdentifier>voteFacts2</QuestionIdentifier>\n    <IsRequired>true</IsRequired>\n    <QuestionContent>\n      <Text>Source 3: Prove</Text>\n      <Text>Link: http://www.washingtonpost.com/blogs/election-2012/wp/2012/10/03/romney-embraces-his-health-care-plan/</Text>\n      <Text>Description: He doubled down in his closing statements. \u201cIf I\u2019m elected, we won\u2019t have in place Obamacare. We\u2019ll put in place the kind of principles I put in place in my own state and allow each state to craft their own program to get people insured and focus on getting the cost of health care down,\u201d Romney said.</Text>\n      <Text>Please visit the source URL and investigate the validity of the source. \n                        How strong is this piece of evidence, on a scale of 1 to 10 from weak to strong?</Text>\n    </QuestionContent>\n    <AnswerSpecification>\n      <FreeTextAnswer>\n        <Constraints>\n          <IsNumeric maxValue=\"10\" minValue=\"1\"/>\n        </Constraints>\n        <NumberOfLinesSuggestion>1</NumberOfLinesSuggestion>\n      </FreeTextAnswer>\n    </AnswerSpecification>\n  </Question>\n  <Question>\n    <QuestionIdentifier>voteFactsDup2</QuestionIdentifier>\n    <IsRequired>true</IsRequired>\n    <QuestionContent>\n      <Text>Is this source a duplicate of a previous source?</Text>\n    </QuestionContent>\n    <AnswerSpecification>\n      <SelectionAnswer>\n        <Selections>\n          <Selection>\n            <SelectionIdentifier>Yes</SelectionIdentifier>\n            <Text>Yes</Text>\n          </Selection>\n          <Selection>\n            <SelectionIdentifier>No</SelectionIdentifier>\n            <Text>No</Text>\n          </Selection>\n        </Selections>\n      </SelectionAnswer>\n    </AnswerSpecification>\n  </Question>\n  <Question>\n    <QuestionIdentifier>voteFactsFinal</QuestionIdentifier>\n    <IsRequired>true</IsRequired>\n    <QuestionContent>\n      <Text>After considering each of the above sources, how true is this factual claim, \n                on a scale of 1 to 10 from false to true?</Text>\n    </QuestionContent>\n    <AnswerSpecification>\n      <FreeTextAnswer>\n        <Constraints>\n          <IsNumeric maxValue=\"10\" minValue=\"1\"/>\n        </Constraints>\n        <NumberOfLinesSuggestion>1</NumberOfLinesSuggestion>\n      </FreeTextAnswer>\n    </AnswerSpecification>\n  </Question>\n</QuestionForm>",
+					"maxAssignments" : 3,
+					"assignmentDurationInSeconds" : 600,
+					"autoApprovalDelayInSeconds" : 2592000,
+					"requesterAnnotation" : null,
+					"hitStatus" : "Reviewable",
+					"hitReviewStatus" : "NotReviewed",
+					"creationTime" : 1.349966088E12,
+					"expiration" : 1.350570888E12,
+					"assignments" : [
+						{
+							"assignmentId" : "21U4SMEZZ2MIS3WK4FG9638T474L41",
+							"workerId" : "A1BAT5O7WVAFPW",
+							"hitId" : "2YWCWA6X3YOCKW9NZCBXXTINKBPNOY",
+							"assignmentStatus" : "Submitted",
+							"autoApprovalTime" : 1.352558482E12,
+							"acceptTime" : 1.349966339E12,
+							"submitTime" : 1.349966482E12,
+							"answer" : {
+								"voteFacts0" : "5",
+								"voteFacts1" : "10",
+								"voteFactsDup1" : [
+									"No"
+								],
+								"voteFacts2" : "7",
+								"voteFactsDup2" : [
+									"No"
+								],
+								"voteFactsFinal" : "7"
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : null,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "25I8H88MQU6LD5K6MPSR5X4AQUNAT5",
+							"workerId" : "A4U86JMS153SR",
+							"hitId" : "2YWCWA6X3YOCKW9NZCBXXTINKBPNOY",
+							"assignmentStatus" : "Submitted",
+							"autoApprovalTime" : 1.352558524E12,
+							"acceptTime" : 1.349966247E12,
+							"submitTime" : 1.349966524E12,
+							"answer" : {
+								"voteFacts0" : "7",
+								"voteFacts1" : "9",
+								"voteFactsDup1" : [
+									"No"
+								],
+								"voteFacts2" : "6",
+								"voteFactsDup2" : [
+									"Yes"
+								],
+								"voteFactsFinal" : "8"
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : null,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "2W6C1PC6SK9RRPEZ9PQEPMAAXXX1P4",
+							"workerId" : "A3VAX2NYGYMTP8",
+							"hitId" : "2YWCWA6X3YOCKW9NZCBXXTINKBPNOY",
+							"assignmentStatus" : "Submitted",
+							"autoApprovalTime" : 1.352559712E12,
+							"acceptTime" : 1.349967507E12,
+							"submitTime" : 1.349967712E12,
+							"answer" : {
+								"voteFacts0" : "9",
+								"voteFacts1" : "6",
+								"voteFactsDup1" : [
+									"No"
+								],
+								"voteFacts2" : "8",
+								"voteFactsDup2" : [
+									"No"
+								],
+								"voteFactsFinal" : "7"
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : null,
+							"deadline" : null,
+							"rejectionTime" : null
+						}
+					],
+					"done" : true
+				},
+				"returnTime" : 1.349967899528E12,
+				"printOutput" : "hit completed: 2YWCWA6X3YOCKW9NZCBXXTINKBPNOY\n"
+			},
+			{
+				"creationTime" : 1.349967899533E12,
+				"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+				"returnValue" : "2GRRNDWIOV1SF9WEN07U93YD11GWHB",
+				"returnTime" : 1.34996789997E12,
+				"printOutput" : "created HIT: 2GRRNDWIOV1SF9WEN07U93YD11GWHB\n        url: https://www.mturk.com/mturk/preview?groupId=2CAVKCJ011K2FLSIJRHWE18N4888A9\n"
+			},
+			{
+				"creationTime" : 1.34996789997E12,
 				"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            stop();\n        }\n    }\n    var hit = mturk.getHIT(hitId);\n    if (!hit.done) {\n        stop();\n    }\n    verbosePrint(\"hit completed: \" + hitId);\n    return hit;\n}\n"
 			}
 		]
 	}
 }
 __safetyCounters = {
-	"moneySpent" : 10.649999999999999,
-	"hitsCreated" : 9
+	"moneySpent" : 13.049999999999997,
+	"hitsCreated" : 11
 }
-// end:1b41
+// end:c170
