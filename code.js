@@ -1,12 +1,13 @@
 // improve text
-var speech = "First, we've got to improve our education system. And we've made enormous progress drawing on ideas both from Democrats and Republicans that are already starting to show gains in some of the toughest-to- deal-with schools. We've got a program called Race to the Top that has prompted reforms in 46 states around the country, raising standards, improving how we train teachers. So now I want to hire another hundred thousand new math and science teachers and create 2 million more slots in our community colleges so that people can get trained for the jobs that are out there right now. And I want to make sure that we keep tuition low for our young people."
-var author = "Barack Obama"
+var speech = "Well, sure. I'd like to clear up the record and go through it piece by piece. First of all, I don't have a $5 trillion tax cut. I don't have a tax cut of a scale that you're talking about. My view is that we ought to provide tax relief to people in the middle class. But I'm not going to reduce the share of taxes paid by high- income people. High-income people are doing just fine in this economy. They'll do fine whether you're president or I am. The people who are having the hard time right now are middle- income Americans. Under the president's policies, middle-income Americans have been buried. They're — they're just being crushed. Middle-income Americans have seen their income come down by $4,300. This is a — this is a tax in and of itself. I'll call it the economy tax. It's been crushing. The same time, gasoline prices have doubled under the president, electric rates are up, food prices are up, health care costs have gone up by $2,500 a family."
+var author = "Mitt Romney"
 
-var hitId0 = createIdentifyHIT(speech, 0.01)
+var hitId0 = createIdentifyHIT(speech, 0.04)
 var hit0 = mturk.waitForHIT(hitId0)
 
 // collect results
 var facts = new Array()
+
 foreach(hit0.assignments[0].answer, function(answer) {
     if (answer) {
         facts.push(answer)
@@ -28,38 +29,50 @@ else {
 }
 
 // find sources
-var sources = new Array()
-foreach(facts, function(fact) {
-    var hitId2 = createSourceHIT(fact, author, 0.05)
+var hits = new Array()
+foreach(checkedFacts, function(fact) {
+    var hitId2 = createSourceHIT(fact, author, 0.25)
     var hit2 = mturk.waitForHIT(hitId2)
-    sources.push(hit2)
+    hits.push(hit2)
 })
 
 // process sources
-// print(process(sources, facts))
+var section = process(hits, checkedFacts)
 
+// check sources
+var finalHits = new Array()
+foreach(section, function(factSources) {
+    var hitId3 = createVoteHIT(factSources.fact, author, factSources, 0.05)
+    var hit3 = mturk.waitForHIT(hitId3)
+    finalHits.push(hit3)
+})
 
+// final processing
+var complete = aggregate(section, finalHits, hits, 3, 3)
 
-print("------------------")
-print(sources)
-print("------------------")
-
-
+// print results
+prettyPrint(complete, speech, author)
 
 function createIdentifyHIT(speechText, identifyCost) {
     default xml namespace = "http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2005-10-01/QuestionForm.xsd";
     var q = <QuestionForm>
+        <Overview>
+            <FormattedContent><![CDATA[
+                <p><strong>Please identify 3-5 potentially incorrect <i>objective</i> claims in the below excerpt. These will be reviewed for their accuracy. 
+                Copy-paste these claims into each of the text boxes below.</strong></p>
+                <p><strong>Do not identify statements that reflect opinion or subjective ideas. For example:</strong></p>
+                <ul>
+                    <li>INAPPROPRIATE: I want to hire another hundred thousand new math and science teachers</li>
+                    <li>APPROPRIATE: Since January 2012, there are over 450,000 more unemployed people.</li>
+                </ul>
+                <p><strong>Note that these examples are from an unrelated speaker. Now please perform the task on the below excerpt.</strong></p>
+            ]]></FormattedContent>
+            <Text>{speechText}</Text>
+        </Overview>
         <Question>
             <QuestionIdentifier>identifyFacts1</QuestionIdentifier>
             <IsRequired>true</IsRequired>
-            <QuestionContent>
-                <FormattedContent><![CDATA[
-                    <p><strong>Please identify up 3-5 factual claims in the below excerpt. These will be reviewed for their accuracy. 
-                    Copy-paste these claims into each of the text boxes below.</strong></p>
-                ]]></FormattedContent>
-                <Text>{speechText}</Text>
-                <Text>Claim 1</Text>
-            </QuestionContent>
+            <QuestionContent><Text>Claim 1</Text></QuestionContent>
             <AnswerSpecification>
                 <FreeTextAnswer>
                     <Constraints>
@@ -136,7 +149,20 @@ function createIdentifyHIT(speechText, identifyCost) {
 
 function createCheckHIT(facts, checkCost) {
     default xml namespace = "http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2005-10-01/QuestionForm.xsd";
-    var q = <QuestionForm></QuestionForm>
+    var q = <QuestionForm>
+        <Overview>
+            <FormattedContent><![CDATA[
+                <p><strong>Below are a series of claims made by a political figure. 
+                Please decide whether they are complete thoughts and also factual claims that can be verified.</strong></p>
+                <p><strong>Statements that reflect opinion or subjective ideas should not be allowed. For example:</strong></p>
+                <ul>
+                    <li>INAPPROPRIATE: I want to hire another hundred thousand new math and science teachers</li>
+                    <li>APPROPRIATE: Since January 2012, there are over 450,000 more unemployed people.</li>
+                </ul>
+                <p><strong>Note that these examples are from an unrelated speaker. Now please perform the task on the below statements.</strong></p>
+            ]]></FormattedContent>
+        </Overview>
+    </QuestionForm>
     var num = 0
     foreach(facts, function(fact) {
         var id = "voteFacts" + num
@@ -156,11 +182,11 @@ function createCheckHIT(facts, checkCost) {
                     <SelectionAnswer>
                         <Selections>
                             <Selection>
-                                <SelectionIdentifier>yes</SelectionIdentifier>
+                                <SelectionIdentifier>Yes</SelectionIdentifier>
                                 <Text>Yes</Text>
                             </Selection>
                             <Selection>
-                                <SelectionIdentifier>no</SelectionIdentifier>
+                                <SelectionIdentifier>No</SelectionIdentifier>
                                 <Text>No</Text>
                             </Selection>
                         </Selections>
@@ -174,7 +200,7 @@ function createCheckHIT(facts, checkCost) {
                             question: "" + q,
                             reward: checkCost,
                             assignmentDurationInSeconds: 5 * 60, 
-                            maxAssignments: 2 })
+                            maxAssignments: 3 })
 }
 
 // helper function to count votes 
@@ -186,7 +212,7 @@ function checkFacts(facts, hit) {
     for (var i = 0; i < hit.assignments.length; i++) {
         if (i == 0) {
             foreach(hit.assignments[i].answer, function(answer) {
-                if (answer == 'yes') {
+                if (answer == 'Yes') {
                     sums.push(1)
                 }
                 else {
@@ -197,7 +223,7 @@ function checkFacts(facts, hit) {
         }
         else {
             foreach(hit.assignments[i].answer, function(answer) {
-                if (answer == 'yes') {
+                if (answer == 'Yes') {
                     sums[count] += 1
                 }
                 count += 1
@@ -218,14 +244,23 @@ function checkFacts(facts, hit) {
 function createSourceHIT(fact, author, sourceCost) {
     default xml namespace = "http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2005-10-01/QuestionForm.xsd";
     var q = <QuestionForm>
+        <Overview>
+            <FormattedContent><![CDATA[
+                <p><strong>Please find a reputable third-party source that proves or disproves this factual claim.</strong></p>
+                <p><strong>For example, to evaluate the claim: Wells Fargo began to make loans to subprime borrowers in 1997</strong></p>
+                <ul>
+                    <li><a href="http://www.economist.com/blogs/schumpeter/2012/10/wells-fargo-and-mortgages">Source</a></li>
+                    <li>Relevant passage: According to the complaint, Wells began in 2001 to ramp up its efforts to build a business in loans to borrowers who could not qualify under normal standards and needed the Federal Housing Administration (FHA) to insure their mortgages.</li>
+                    <li>Prove or Disprove: Disprove</li>
+                </ul>
+                <p><strong>Please perform the task on the below statement:</strong></p>
+            ]]></FormattedContent>
+            <Text>{author}: {fact}</Text>
+        </Overview>
         <Question>
             <QuestionIdentifier>sourceLink</QuestionIdentifier>
             <IsRequired>true</IsRequired>
             <QuestionContent>
-                <FormattedContent><![CDATA[
-                    <p><strong>Please find a reputable third-party source that supports or refutes this factual claim.</strong></p>
-                ]]></FormattedContent>
-                <Text>{author}: {fact}</Text>
                 <Text>Paste the link to your source.</Text>
             </QuestionContent>
             <AnswerSpecification>
@@ -258,18 +293,18 @@ function createSourceHIT(fact, author, sourceCost) {
             <QuestionIdentifier>sourceValidity</QuestionIdentifier>
             <IsRequired>true</IsRequired>
             <QuestionContent>
-                <Text>Does your evidence support or refute the claim?</Text>
+                <Text>Does your evidence prove or disprove the claim?</Text>
             </QuestionContent>
             <AnswerSpecification>
                 <SelectionAnswer>
                     <Selections>
                         <Selection>
-                            <SelectionIdentifier>support</SelectionIdentifier>
-                            <Text>Support</Text>
+                            <SelectionIdentifier>Prove</SelectionIdentifier>
+                            <Text>Prove</Text>
                         </Selection>
                         <Selection>
-                            <SelectionIdentifier>refute</SelectionIdentifier>
-                            <Text>Refute</Text>
+                            <SelectionIdentifier>Disprove</SelectionIdentifier>
+                            <Text>Disprove</Text>
                         </Selection>
                     </Selections>
                 </SelectionAnswer>
@@ -282,110 +317,253 @@ function createSourceHIT(fact, author, sourceCost) {
                             question : "" + q, 
                             reward : sourceCost, 
                             assignmentDurationInSeconds : 10 * 60, 
-                            maxAssignments: 2})
+                            maxAssignments: 3})
 }
 
 // helper function to extract source info
-function process(sources, facts) {
-    var section = new Array()
+function process(hits, facts) {
+    var excerpt = new Array()
     var count = 0
 
-    foreach(sources, function(hit) {
-        var links = new Array()
-        var notes = new Array()
-        var labels = new Array()
+    foreach(hits, function(hit) {
+        var link = new Array()
+        var note = new Array()
+        var label = new Array()
 
-        foreach(hit.assignment, function(assign){
-            links.push(assign.answer.sourceLink)
-            notes.push(assign.answer.sourceNote)
-            labels.push(assign.answer.sourceValidity)
+        foreach(hit.assignments, function(assign){            
+            link.push(assign.answer.sourceLink)
+            note.push(assign.answer.sourceNote)
+            label.push(assign.answer.sourceValidity[0])
         })
 
-        section.push({ fact: facts[count], links: link, notes: note, labels: label })
+        excerpt.push({ fact: facts[count], links: link, notes: note, labels: label })
         count += 1
     })
 
-    return section
+    return excerpt
 }
 
-// TODO 
-function createVoteHIT(sources, voteCost) {
+function createVoteHIT(factText, authorName, factSources, voteCost) {
     default xml namespace = "http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2005-10-01/QuestionForm.xsd";
-    var q = <QuestionForm></QuestionForm>
-    var num = 0
-    foreach(sources, function(source) {
-        var id = "voteSource" + num
-        print(id)
+    var q = <QuestionForm>
+        <Overview>
+            <FormattedContent><![CDATA[
+                <p><strong>Consider the below sources which either prove or disprove this factual claim:</strong></p>
+            ]]></FormattedContent>
+            <Text>{authorName}: {factText}</Text>
+        </Overview>
+    </QuestionForm>
+
+    for (var num = 0; num < factSources.links.length; num++) {
+        var id = "voteFacts" + num
+        var iddup = "voteFactsDup" + num
+
+        var realNum = num + 1
+        var label = factSources.labels[num]
+        var link = factSources.links[num]
+        var note = factSources.notes[num]
 
         default xml namespace = "http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2005-10-01/QuestionForm.xsd";
-        q += 
-            <Question>
-                <QuestionIdentifier>{id}</QuestionIdentifier>
-                <IsRequired>true</IsRequired>
-                <QuestionContent>
-                    <FormattedContent><![CDATA[
-                        <p><strong>Is this a factual claim?</strong></p>
-                    ]]></FormattedContent>
-                    <Text>{fact}</Text>
-                </QuestionContent>
-                <AnswerSpecification>
-                    <SelectionAnswer>
-                        <Selections>
-                            <Selection>
-                                <SelectionIdentifier>yes</SelectionIdentifier>
-                                <Text>Yes</Text>
-                            </Selection>
-                            <Selection>
-                                <SelectionIdentifier>no</SelectionIdentifier>
-                                <Text>No</Text>
-                            </Selection>
-                        </Selections>
-                    </SelectionAnswer>
-                </AnswerSpecification>
-            </Question>
-    })
-    return mturk.createHIT({title: "Vote on Factual Claims",
-                            desc: "Decide if a political statement is a factual claim",
+
+        // special instructions at the top
+        if (num == 0) {
+            q.Question += 
+                <Question>
+                    <QuestionIdentifier>{id}</QuestionIdentifier>
+                    <IsRequired>true</IsRequired>
+                    <QuestionContent>
+                        <Text>Source {realNum}: {label}</Text>
+                        <Text>Link: {link}</Text>
+                        <Text>Description: {note}</Text>
+                        <Text>Please visit the source URL and investigate the validity of the source. 
+                        How strong is this piece of evidence, on a scale of 1 to 10 from weak to strong?</Text>
+                    </QuestionContent>
+                    <AnswerSpecification>
+                        <FreeTextAnswer>
+                            <Constraints>                            
+                                <IsNumeric minValue="1" maxValue="10"/>
+                            </Constraints>
+                            <NumberOfLinesSuggestion>1</NumberOfLinesSuggestion>
+                        </FreeTextAnswer>
+                    </AnswerSpecification>
+                </Question>
+        }
+        else {
+            q.Question += 
+                <Question>
+                    <QuestionIdentifier>{id}</QuestionIdentifier>
+                    <IsRequired>true</IsRequired>
+                    <QuestionContent>
+                        <Text>Source {realNum}: {label}</Text>
+                        <Text>Link: {link}</Text>
+                        <Text>Description: {note}</Text>
+                        <Text>Please visit the source URL and investigate the validity of the source. 
+                        How strong is this piece of evidence, on a scale of 1 to 10 from weak to strong?</Text>
+                    </QuestionContent>
+                    <AnswerSpecification>
+                        <FreeTextAnswer>
+                            <Constraints>                            
+                                <IsNumeric minValue="1" maxValue="10"/>
+                            </Constraints>
+                            <NumberOfLinesSuggestion>1</NumberOfLinesSuggestion>
+                        </FreeTextAnswer>
+                    </AnswerSpecification>
+                </Question>
+            q.Question +=
+                <Question>
+                    <QuestionIdentifier>{iddup}</QuestionIdentifier>
+                    <IsRequired>true</IsRequired>
+                    <QuestionContent>
+                        <Text>Is this source a duplicate of a previous source?</Text>
+                    </QuestionContent>
+                    <AnswerSpecification>
+                        <SelectionAnswer>
+                            <Selections>
+                                <Selection>
+                                    <SelectionIdentifier>Yes</SelectionIdentifier>
+                                    <Text>Yes</Text>
+                                </Selection>
+                                <Selection>
+                                    <SelectionIdentifier>No</SelectionIdentifier>
+                                    <Text>No</Text>
+                                </Selection>
+                            </Selections>
+                        </SelectionAnswer>
+                    </AnswerSpecification>
+                </Question>
+        }
+    }
+
+    // final evaluation
+    q.Question += 
+        <Question>
+            <QuestionIdentifier>voteFactsFinal</QuestionIdentifier>
+            <IsRequired>true</IsRequired>
+            <QuestionContent>
+                <Text>After considering each of the above sources, how true is this factual claim, 
+                on a scale of 1 to 10 from false to true?</Text>
+            </QuestionContent>
+            <AnswerSpecification>
+                <FreeTextAnswer>
+                    <Constraints>                            
+                        <IsNumeric minValue="1" maxValue="10"/>
+                    </Constraints>
+                    <NumberOfLinesSuggestion>1</NumberOfLinesSuggestion>
+                </FreeTextAnswer>
+            </AnswerSpecification>
+        </Question>
+
+    return mturk.createHIT({title: "Vote on whether a political claim is truthful",
+                            desc: "Determine the validity of political sources and fact-check a political claim",
                             question: "" + q,
-                            reward: checkCost,
-                            assignmentDurationInSeconds: 5 * 60, 
+                            reward: voteCost,
+                            assignmentDurationInSeconds: 10 * 60, 
                             maxAssignments: 3 })
 }
 
-function vote(textA, textB, voteCost) {
-    default xml namespace = "http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2005-10-01/QuestionForm.xsd";
-    var q = <QuestionForm>
-        <Question>
-            <QuestionIdentifier>vote</QuestionIdentifier>
-            <IsRequired>true</IsRequired>
-            <QuestionContent>
-                <FormattedContent><![CDATA[
-<ul>
-<li>Please select the better description for this image.</li>
-</ul>
-<img src="http://groups.csail.mit.edu/uid/turkit/www/nut_people.jpg" alt="description not available"></img>
-]]></FormattedContent>
-            </QuestionContent>
-            <AnswerSpecification>
-                <SelectionAnswer>
-                    <Selections>
-                    </Selections>
-                </SelectionAnswer>
-            </AnswerSpecification>
-        </Question>
-    </QuestionForm>
+// helper function to aggregate ratings
+function aggregate(excerptSection, sourceVoteHits, sourceWorkHits, totalSources, totalAssignments) {
+    var factCount = 0
+    var finalResults = new Array()
 
-    var options = [{key:"a",value:textA}, {key:"b",value:textB}]
-    shuffle(options)
-    foreach(options, function (op) {
-        default xml namespace = "http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2005-10-01/QuestionForm.xsd";
-        q.Question.AnswerSpecification.SelectionAnswer.Selections.Selection +=
-            <Selection>
-                <SelectionIdentifier>{op.key}</SelectionIdentifier>
-                <Text>{op.value}</Text>
-            </Selection>
+    foreach(sourceVoteHits, function(sourceVoteHit) {
+
+        var cumRating = 0
+        var factText = excerptSection[factCount].fact
+
+        var sourceRatings = new Array()
+        var sourceDup = new Array()
+        var sourceInfo = new Array()
+
+        var assignCount = 0
+
+        sourceDup.push(0) // first source is never a dup
+
+        foreach(sourceVoteHit.assignments, function(assign) {
+            
+            var sourceCount = 0
+
+            foreach(assign.answer, function(answer) {
+                if (answer instanceof Array) {
+                    if (answer[0] == 'Yes') {
+                        if (assignCount == 0) {
+                            sourceDup.push(1)
+                        }
+                        else {
+                            sourceDup[sourceCount] += 1
+                        }
+                        sourceCount += 1
+                    }
+                    else if (answer[0] == 'No') {
+                        if (assignCount == 0) {
+                            sourceDup.push(0)
+                        }
+                        sourceCount += 1
+                    }
+                }
+                else if (sourceCount == totalSources) {
+                    cumRating += parseInt(answer, 10)
+                }
+                else {
+                    if (assignCount == 0) {
+                        sourceRatings.push(parseInt(answer, 10))
+                    }
+                    else {
+                        sourceRatings[sourceCount] += parseInt(answer, 10)
+                    }
+                }
+
+                if (sourceCount == 0) {
+                    sourceCount += 1    
+                }
+            })
+            assignCount += 1
+        })
+
+        // kill dups and approve assignments
+        for (var i = 0; i < sourceDup.length; i++) {
+            if (sourceDup[i] == totalAssignments) {
+                mturk.rejectAssignment(sourceWorkHits[factCount].assignments[i])
+            }
+            else {
+                mturk.approveAssignment(sourceWorkHits[factCount].assignments[i])
+                sourceInfo.push([excerptSection[factCount].links[i], excerptSection[factCount].labels[i], excerptSection[factCount].notes[i],
+                                 sourceRatings[i] / totalAssignments])
+            }
+        }
+
+        // average cumulative rating of fact
+        cumRating = cumRating / totalSources
+
+        finalResults.push({ fact: factText, sources: sourceInfo, rating: cumRating })
+        factCount += 1
+        mturk.approveAssignments(sourceVoteHit.assignments)
     })
-    var voteHitId = mturk.createHIT({title : "Vote on Text Improvement", desc : "Decide which two small paragraphs is closer to a goal.", question : "" + q,  reward : voteCost, maxAssignments : 2})
-    var voteResults = mturk.vote(voteHitId, function (answer) {return answer.vote[0]})
-    return voteResults.bestOption == "b"
+
+    return finalResults
+}
+
+// helper function to output results to console
+function prettyPrint(completeResults, fullText, author) {
+    print("----------")
+    print(author) // author
+    print(fullText) // excerpt text
+    print(completeResults.length) // number of facts
+
+    // for each fact
+    foreach(completeResults, function(identifiedFact) {
+        print(identifiedFact.fact) // fact
+        print(identifiedFact.rating) // 1-10 rating of lie-truth of fact
+        print(identifiedFact.sources.length) // number sources corresponding to fact
+
+        // for each source
+        foreach(identifiedFact.sources, function(source) {
+            print(source[0]) // link
+            print(source[1]) // notes
+            print(source[2]) // prove or disprove string: Prove, Disprove
+            print(source[3]) // 1-10 rating
+
+        })
+    })
+    print("----------")
 }
