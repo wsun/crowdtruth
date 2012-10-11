@@ -42,7 +42,7 @@ var section = process(hits, checkedFacts)
 // check sources
 var finalHits = new Array()
 foreach(section, function(factSources) {
-    var hitId3 = createVoteHIT(factSources.fact, author, factSources, 0.30)
+    var hitId3 = createVoteHIT(factSources.fact, author, factSources, 0.40)
     var hit3 = mturk.waitForHIT(hitId3)
     finalHits.push(hit3)
 })

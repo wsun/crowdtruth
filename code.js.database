@@ -1,4 +1,4 @@
-// begin:6db5
+// begin:b12d
 __HITs = {
 	"real:2MQB727M0IGFSYMCG56S3F4VKHHDYC" : {
 		"url" : "https://www.mturk.com/mturk/preview?groupId=2HHHOVR14IXKWJUKCO5C4A6X30287I"
@@ -13,6 +13,9 @@ __HITs = {
 		"url" : "https://www.mturk.com/mturk/preview?groupId=2IQERSQV66RLXYR4DOMWIVKI641B3F"
 	},
 	"real:2929RJ85OZIZMYVLKWDOWQ5EYIOW8U" : {
+		"url" : "https://www.mturk.com/mturk/preview?groupId=2IQERSQV66RLXYR4DOMWIVKI641B3F"
+	},
+	"real:2JMSMEZZ2MIKU4I5IW0YB8TWYQA5MB" : {
 		"url" : "https://www.mturk.com/mturk/preview?groupId=2IQERSQV66RLXYR4DOMWIVKI641B3F"
 	}
 }
@@ -420,13 +423,106 @@ __stackFrames = {
 			},
 			{
 				"creationTime" : 1.349951491477E12,
+				"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            stop();\n        }\n    }\n    var hit = mturk.getHIT(hitId);\n    if (!hit.done) {\n        stop();\n    }\n    verbosePrint(\"hit completed: \" + hitId);\n    return hit;\n}\n",
+				"returnValue" : {
+					"hitId" : "2929RJ85OZIZMYVLKWDOWQ5EYIOW8U",
+					"hitTypeId" : "2IQERSQV66RLXYR4DOMWIVKI641B3F",
+					"title" : "Investigate a Political Claim",
+					"description" : "Investigate whether a political claim is valid",
+					"keywords" : null,
+					"reward" : 0.5,
+					"question" : "<QuestionForm xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2005-10-01/QuestionForm.xsd\">\n  <Overview>\n    <FormattedContent><![CDATA[<p><strong>Please find a reputable third-party source that proves or disproves this factual claim.</strong></p>\n                <p><strong>For example, to evaluate the claim: Wells Fargo began to make loans to subprime borrowers in 1997</strong></p>\n                <ul>\n                    <li><a href=\"http://www.economist.com/blogs/schumpeter/2012/10/wells-fargo-and-mortgages\">Source</a></li>\n                    <li>Relevant passage: According to the complaint, Wells began in 2001 to ramp up its efforts to build a business in loans to borrowers who could not qualify under normal standards and needed the Federal Housing Administration (FHA) to insure their mortgages.</li>\n                    <li>Prove or Disprove: Disprove</li>\n                </ul>\n                <p><strong>Please perform the task on the below statement:</strong></p>]]></FormattedContent>\n    <Text>Mitt Romney: I put in place in my own state and allow each state to craft their own programs to get people insured</Text>\n  </Overview>\n  <Question>\n    <QuestionIdentifier>sourceLink</QuestionIdentifier>\n    <IsRequired>true</IsRequired>\n    <QuestionContent>\n      <Text>Paste the link to your source.</Text>\n    </QuestionContent>\n    <AnswerSpecification>\n      <FreeTextAnswer>\n        <Constraints>\n          <Length maxLength=\"500\" minLength=\"2\"/>\n          <AnswerFormatRegex errorText=\"The content cannot be blank.\" regex=\"\\S\"/>\n        </Constraints>\n        <NumberOfLinesSuggestion>1</NumberOfLinesSuggestion>\n      </FreeTextAnswer>\n    </AnswerSpecification>\n  </Question>\n  <Question>\n    <QuestionIdentifier>sourceNote</QuestionIdentifier>\n    <IsRequired>true</IsRequired>\n    <QuestionContent>\n      <Text>Paste the relevant passage or describe the evidence provided.</Text>\n    </QuestionContent>\n    <AnswerSpecification>\n      <FreeTextAnswer>\n        <Constraints>\n          <Length maxLength=\"500\" minLength=\"2\"/>\n          <AnswerFormatRegex errorText=\"The content cannot be blank.\" regex=\"\\S\"/>\n        </Constraints>\n        <NumberOfLinesSuggestion>4</NumberOfLinesSuggestion>\n      </FreeTextAnswer>\n    </AnswerSpecification>\n  </Question>\n  <Question>\n    <QuestionIdentifier>sourceValidity</QuestionIdentifier>\n    <IsRequired>true</IsRequired>\n    <QuestionContent>\n      <Text>Does your evidence prove or disprove the claim?</Text>\n    </QuestionContent>\n    <AnswerSpecification>\n      <SelectionAnswer>\n        <Selections>\n          <Selection>\n            <SelectionIdentifier>Prove</SelectionIdentifier>\n            <Text>Prove</Text>\n          </Selection>\n          <Selection>\n            <SelectionIdentifier>Disprove</SelectionIdentifier>\n            <Text>Disprove</Text>\n          </Selection>\n        </Selections>\n      </SelectionAnswer>\n    </AnswerSpecification>\n  </Question>\n</QuestionForm>",
+					"maxAssignments" : 3,
+					"assignmentDurationInSeconds" : 900,
+					"autoApprovalDelayInSeconds" : 2592000,
+					"requesterAnnotation" : null,
+					"hitStatus" : "Reviewable",
+					"hitReviewStatus" : "NotReviewed",
+					"creationTime" : 1.349951491E12,
+					"expiration" : 1.350556291E12,
+					"assignments" : [
+						{
+							"assignmentId" : "2NXNQYN5F3Q0RXE48TEC4YB4HP69DT",
+							"workerId" : "A2LL4JJJPB05VE",
+							"hitId" : "2929RJ85OZIZMYVLKWDOWQ5EYIOW8U",
+							"assignmentStatus" : "Submitted",
+							"autoApprovalTime" : 1.35254412E12,
+							"acceptTime" : 1.349951924E12,
+							"submitTime" : 1.34995212E12,
+							"answer" : {
+								"sourceLink" : "http://rapgenius.com/Barack-obama-first-presidential-debate-of-2012-lyrics#lyric",
+								"sourceNote" : "If I\'m elected we won\'t have Obama. We\'ll put in place the kind of principles that I put in place in my own state and allow each state to craft their own programs to get people insured and we\'ll focus on getting the cost of health care down.",
+								"sourceValidity" : [
+									"Prove"
+								]
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : null,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "2W2ZHHRRLFQ0W4W61OSKPO9EO18OFX",
+							"workerId" : "A7J4Y6FOPZ8YV",
+							"hitId" : "2929RJ85OZIZMYVLKWDOWQ5EYIOW8U",
+							"assignmentStatus" : "Submitted",
+							"autoApprovalTime" : 1.352544452E12,
+							"acceptTime" : 1.349951562E12,
+							"submitTime" : 1.349952452E12,
+							"answer" : {
+								"sourceLink" : "http://thinkprogress.org/health/2012/10/04/958051/romney-misrepresents-health-plan/?mobile=nc",
+								"sourceNote" : "Notice that Romney suggests that his plan will protect consumers by imposing government mandates, and then he proceeds to slam Obamacare for imposing government mandates.",
+								"sourceValidity" : [
+									"Disprove"
+								]
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : null,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "2BTK274J79KQ4NAJXBXU5FCDCG0HFA",
+							"workerId" : "A3LH494MMAF69S",
+							"hitId" : "2929RJ85OZIZMYVLKWDOWQ5EYIOW8U",
+							"assignmentStatus" : "Submitted",
+							"autoApprovalTime" : 1.352553215E12,
+							"acceptTime" : 1.349960966E12,
+							"submitTime" : 1.349961215E12,
+							"answer" : {
+								"sourceLink" : "http://www.washingtonpost.com/blogs/election-2012/wp/2012/10/03/romney-embraces-his-health-care-plan/",
+								"sourceNote" : "He doubled down in his closing statements. \u201cIf I\u2019m elected, we won\u2019t have in place Obamacare. We\u2019ll put in place the kind of principles I put in place in my own state and allow each state to craft their own program to get people insured and focus on getting the cost of health care down,\u201d Romney said.",
+								"sourceValidity" : [
+									"Prove"
+								]
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : null,
+							"deadline" : null,
+							"rejectionTime" : null
+						}
+					],
+					"done" : true
+				},
+				"returnTime" : 1.349961243248E12,
+				"printOutput" : "hit completed: 2929RJ85OZIZMYVLKWDOWQ5EYIOW8U\n"
+			},
+			{
+				"creationTime" : 1.34996124325E12,
+				"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+				"returnValue" : "2JMSMEZZ2MIKU4I5IW0YB8TWYQA5MB",
+				"returnTime" : 1.349961243396E12,
+				"printOutput" : "created HIT: 2JMSMEZZ2MIKU4I5IW0YB8TWYQA5MB\n        url: https://www.mturk.com/mturk/preview?groupId=2IQERSQV66RLXYR4DOMWIVKI641B3F\n"
+			},
+			{
+				"creationTime" : 1.349961243397E12,
 				"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            stop();\n        }\n    }\n    var hit = mturk.getHIT(hitId);\n    if (!hit.done) {\n        stop();\n    }\n    verbosePrint(\"hit completed: \" + hitId);\n    return hit;\n}\n"
 			}
 		]
 	}
 }
 __safetyCounters = {
-	"moneySpent" : 5.25,
-	"hitsCreated" : 5
+	"moneySpent" : 6.75,
+	"hitsCreated" : 6
 }
-// end:6db5
+// end:b12d
