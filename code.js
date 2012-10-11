@@ -1,8 +1,8 @@
 // improve text
-var speech = "Well, sure. I'd like to clear up the record and go through it piece by piece. First of all, I don't have a $5 trillion tax cut. I don't have a tax cut of a scale that you're talking about. My view is that we ought to provide tax relief to people in the middle class. But I'm not going to reduce the share of taxes paid by high- income people. High-income people are doing just fine in this economy. They'll do fine whether you're president or I am. The people who are having the hard time right now are middle- income Americans. Under the president's policies, middle-income Americans have been buried. They're — they're just being crushed. Middle-income Americans have seen their income come down by $4,300. This is a — this is a tax in and of itself. I'll call it the economy tax. It's been crushing. The same time, gasoline prices have doubled under the president, electric rates are up, food prices are up, health care costs have gone up by $2,500 a family."
+var speech = "If the president's re-elected, 'Obamacare' will be fully installed. In my view, that's going to mean a whole different way of life for people who counted on the insurance plan they had in the past. Many will lose it. You're going to see health premiums go up by some $2,500 per — per family. If I'm elected, we won't have 'Obamacare.' We'll put in place the kind of principles that I put in place in my own state and allow each state to craft their own programs to get people insured. And we'll focus on getting the cost of health care down. If the president were to be re-elected, you're going to see a $716 billion cut to Medicare. You'll have 4 million people who will lose Medicare advantage. You'll have hospitals and providers that'll no longer accept Medicare patients. I'll restore that $716 billion to Medicare. And finally, military. If the president's re-elected, you'll see dramatic cuts to our military. The secretary of defense has said these would be even devastating. I will not cut our commitment to our military. I will keep America strong and get America's middle class working again."
 var author = "Mitt Romney"
 
-var hitId0 = createIdentifyHIT(speech, 0.04)
+var hitId0 = createIdentifyHIT(speech, 0.30)
 var hit0 = mturk.waitForHIT(hitId0)
 
 // collect results
@@ -15,7 +15,7 @@ foreach(hit0.assignments[0].answer, function(answer) {
 })
 
 // check facts
-var hitId1 = createCheckHIT(facts, 0.02)
+var hitId1 = createCheckHIT(facts, 0.15)
 var hit1 = mturk.waitForHIT(hitId1)
 var checkedFacts = checkFacts(facts, hit1)
 mturk.approveAssignments(hit1.assignments)
@@ -31,7 +31,7 @@ else {
 // find sources
 var hits = new Array()
 foreach(checkedFacts, function(fact) {
-    var hitId2 = createSourceHIT(fact, author, 0.25)
+    var hitId2 = createSourceHIT(fact, author, 0.50)
     var hit2 = mturk.waitForHIT(hitId2)
     hits.push(hit2)
 })
@@ -42,7 +42,7 @@ var section = process(hits, checkedFacts)
 // check sources
 var finalHits = new Array()
 foreach(section, function(factSources) {
-    var hitId3 = createVoteHIT(factSources.fact, author, factSources, 0.05)
+    var hitId3 = createVoteHIT(factSources.fact, author, factSources, 0.30)
     var hit3 = mturk.waitForHIT(hitId3)
     finalHits.push(hit3)
 })
@@ -59,7 +59,7 @@ function createIdentifyHIT(speechText, identifyCost) {
         <Overview>
             <FormattedContent><![CDATA[
                 <p><strong>Please identify 3-5 potentially incorrect <i>objective</i> claims in the below excerpt. These will be reviewed for their accuracy. 
-                Copy-paste these claims into each of the text boxes below.</strong></p>
+                Copy-paste these claims into each of the text boxes below. A bonus will be considered for exceptional performance.</strong></p>
                 <p><strong>Do not identify statements that reflect opinion or subjective ideas. For example:</strong></p>
                 <ul>
                     <li>INAPPROPRIATE: I want to hire another hundred thousand new math and science teachers</li>
@@ -139,11 +139,11 @@ function createIdentifyHIT(speechText, identifyCost) {
         </Question>
     </QuestionForm>
     
-    return mturk.createHIT({title : "Identify Facts", 
+    return mturk.createHIT({title : "Identify Facts in a Political Speech", 
                             desc : "Identify factual claims from a political statement",
                             question : "" + q, 
                             reward : identifyCost, 
-                            assignmentDurationInSeconds : 5 * 60, 
+                            assignmentDurationInSeconds : 10 * 60, 
                             maxAssignments: 1})
 }
 
@@ -195,7 +195,7 @@ function createCheckHIT(facts, checkCost) {
             </Question>
         num += 1
     })
-    return mturk.createHIT({title: "Vote on Factual Claims",
+    return mturk.createHIT({title: "Vote on Political Claims",
                             desc: "Decide if a political statement is a factual claim",
                             question: "" + q,
                             reward: checkCost,
@@ -312,11 +312,11 @@ function createSourceHIT(fact, author, sourceCost) {
         </Question>
     </QuestionForm>
 
-    return mturk.createHIT({title : "Investigate a Factual Claim", 
+    return mturk.createHIT({title : "Investigate a Political Claim", 
                             desc : "Investigate whether a political claim is valid",
                             question : "" + q, 
                             reward : sourceCost, 
-                            assignmentDurationInSeconds : 10 * 60, 
+                            assignmentDurationInSeconds : 15 * 60, 
                             maxAssignments: 3})
 }
 
@@ -520,15 +520,17 @@ function aggregate(excerptSection, sourceVoteHits, sourceWorkHits, totalSources,
             assignCount += 1
         })
 
-        // kill dups and approve assignments
+        // kill dups, reject poor sources, and approve assignments
         for (var i = 0; i < sourceDup.length; i++) {
-            if (sourceDup[i] == totalAssignments) {
+            if (sourceRatings[i] / totalAssignments <= 1.5) {
                 mturk.rejectAssignment(sourceWorkHits[factCount].assignments[i])
             }
             else {
                 mturk.approveAssignment(sourceWorkHits[factCount].assignments[i])
-                sourceInfo.push([excerptSection[factCount].links[i], excerptSection[factCount].labels[i], excerptSection[factCount].notes[i],
-                                 sourceRatings[i] / totalAssignments])
+                if (sourceDup[i] != totalAssignments) {
+                    sourceInfo.push([excerptSection[factCount].links[i], excerptSection[factCount].labels[i], excerptSection[factCount].notes[i],
+                                    sourceRatings[i] / totalAssignments])
+                }
             }
         }
 
@@ -559,8 +561,8 @@ function prettyPrint(completeResults, fullText, author) {
         // for each source
         foreach(identifiedFact.sources, function(source) {
             print(source[0]) // link
-            print(source[1]) // notes
-            print(source[2]) // prove or disprove string: Prove, Disprove
+            print(source[1]) // prove or disprove string: Prove, Disprove
+            print(source[2]) // notes
             print(source[3]) // 1-10 rating
 
         })
