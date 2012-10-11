@@ -1,4 +1,4 @@
-// begin:98ee
+// begin:1b41
 __HITs = {
 	"real:2MQB727M0IGFSYMCG56S3F4VKHHDYC" : {
 		"url" : "https://www.mturk.com/mturk/preview?groupId=2HHHOVR14IXKWJUKCO5C4A6X30287I"
@@ -20,6 +20,12 @@ __HITs = {
 	},
 	"real:2UNNQYN5F3Q0RXE48TEC4YB4B81D9S" : {
 		"url" : "https://www.mturk.com/mturk/preview?groupId=2IQERSQV66RLXYR4DOMWIVKI641B3F"
+	},
+	"real:27QH88MQU6L5WS4NS8IX54AIL8ZBUA" : {
+		"url" : "https://www.mturk.com/mturk/preview?groupId=2CAVKCJ011K2FLSIJRHWE18N4888A9"
+	},
+	"real:2BXJ51Y7QEOZNFZ3BJJTUOFXT6KCFJ" : {
+		"url" : "https://www.mturk.com/mturk/preview?groupId=2CAVKCJ011K2FLSIJRHWE18N4888A9"
 	}
 }
 __S3_Objects = {
@@ -612,13 +618,214 @@ __stackFrames = {
 			},
 			{
 				"creationTime" : 1.349963112176E12,
+				"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            stop();\n        }\n    }\n    var hit = mturk.getHIT(hitId);\n    if (!hit.done) {\n        stop();\n    }\n    verbosePrint(\"hit completed: \" + hitId);\n    return hit;\n}\n",
+				"returnValue" : {
+					"hitId" : "2UNNQYN5F3Q0RXE48TEC4YB4B81D9S",
+					"hitTypeId" : "2IQERSQV66RLXYR4DOMWIVKI641B3F",
+					"title" : "Investigate a Political Claim",
+					"description" : "Investigate whether a political claim is valid",
+					"keywords" : null,
+					"reward" : 0.5,
+					"question" : "<QuestionForm xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2005-10-01/QuestionForm.xsd\">\n  <Overview>\n    <FormattedContent><![CDATA[<p><strong>Please find a reputable third-party source that proves or disproves this factual claim.</strong></p>\n                <p><strong>For example, to evaluate the claim: Wells Fargo began to make loans to subprime borrowers in 1997</strong></p>\n                <ul>\n                    <li><a href=\"http://www.economist.com/blogs/schumpeter/2012/10/wells-fargo-and-mortgages\">Source</a></li>\n                    <li>Relevant passage: According to the complaint, Wells began in 2001 to ramp up its efforts to build a business in loans to borrowers who could not qualify under normal standards and needed the Federal Housing Administration (FHA) to insure their mortgages.</li>\n                    <li>Prove or Disprove: Disprove</li>\n                </ul>\n                <p><strong>Please perform the task on the below statement:</strong></p>]]></FormattedContent>\n    <Text>Mitt Romney: I\'ll restore that $716 billion to Medicare.</Text>\n  </Overview>\n  <Question>\n    <QuestionIdentifier>sourceLink</QuestionIdentifier>\n    <IsRequired>true</IsRequired>\n    <QuestionContent>\n      <Text>Paste the link to your source.</Text>\n    </QuestionContent>\n    <AnswerSpecification>\n      <FreeTextAnswer>\n        <Constraints>\n          <Length maxLength=\"500\" minLength=\"2\"/>\n          <AnswerFormatRegex errorText=\"The content cannot be blank.\" regex=\"\\S\"/>\n        </Constraints>\n        <NumberOfLinesSuggestion>1</NumberOfLinesSuggestion>\n      </FreeTextAnswer>\n    </AnswerSpecification>\n  </Question>\n  <Question>\n    <QuestionIdentifier>sourceNote</QuestionIdentifier>\n    <IsRequired>true</IsRequired>\n    <QuestionContent>\n      <Text>Paste the relevant passage or describe the evidence provided.</Text>\n    </QuestionContent>\n    <AnswerSpecification>\n      <FreeTextAnswer>\n        <Constraints>\n          <Length maxLength=\"500\" minLength=\"2\"/>\n          <AnswerFormatRegex errorText=\"The content cannot be blank.\" regex=\"\\S\"/>\n        </Constraints>\n        <NumberOfLinesSuggestion>4</NumberOfLinesSuggestion>\n      </FreeTextAnswer>\n    </AnswerSpecification>\n  </Question>\n  <Question>\n    <QuestionIdentifier>sourceValidity</QuestionIdentifier>\n    <IsRequired>true</IsRequired>\n    <QuestionContent>\n      <Text>Does your evidence prove or disprove the claim?</Text>\n    </QuestionContent>\n    <AnswerSpecification>\n      <SelectionAnswer>\n        <Selections>\n          <Selection>\n            <SelectionIdentifier>Prove</SelectionIdentifier>\n            <Text>Prove</Text>\n          </Selection>\n          <Selection>\n            <SelectionIdentifier>Disprove</SelectionIdentifier>\n            <Text>Disprove</Text>\n          </Selection>\n        </Selections>\n      </SelectionAnswer>\n    </AnswerSpecification>\n  </Question>\n</QuestionForm>",
+					"maxAssignments" : 3,
+					"assignmentDurationInSeconds" : 900,
+					"autoApprovalDelayInSeconds" : 2592000,
+					"requesterAnnotation" : null,
+					"hitStatus" : "Reviewable",
+					"hitReviewStatus" : "NotReviewed",
+					"creationTime" : 1.349963112E12,
+					"expiration" : 1.350567912E12,
+					"assignments" : [
+						{
+							"assignmentId" : "2B4STMOFXRDSCZLCO54N5JFM9CFURL",
+							"workerId" : "A3UDPAU4IT7VX6",
+							"hitId" : "2UNNQYN5F3Q0RXE48TEC4YB4B81D9S",
+							"assignmentStatus" : "Submitted",
+							"autoApprovalTime" : 1.352555787E12,
+							"acceptTime" : 1.349963663E12,
+							"submitTime" : 1.349963787E12,
+							"answer" : {
+								"sourceLink" : "http://www.csmonitor.com/USA/DC-Decoder/2012/1004/Presidential-debate-101-Is-Romney-right-about-716-billion-in-Medicare-cuts",
+								"sourceNote" : "\"If the president were to be reelected you\'re going to see a $716 billion cut to Medicare,\" Romney said. \"You\u2019ll have 4 million people who will lose Medicare Advantage. You\u2019ll have hospitals and providers that\u2019ll no longer accept Medicare patients. I\u2019ll restore that $716 billion to Medicare.\"",
+								"sourceValidity" : [
+									"Prove"
+								]
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : null,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "2DI39Z0B6UTOEADP5ZKVZKGP431NYO",
+							"workerId" : "A7J4Y6FOPZ8YV",
+							"hitId" : "2UNNQYN5F3Q0RXE48TEC4YB4B81D9S",
+							"assignmentStatus" : "Submitted",
+							"autoApprovalTime" : 1.352556075E12,
+							"acceptTime" : 1.34996376E12,
+							"submitTime" : 1.349964075E12,
+							"answer" : {
+								"sourceLink" : "http://www.dailykos.com/story/2012/10/04/1139914/-Romney-s-big-Medicare-lie-takes-center-stage-in-debate",
+								"sourceNote" : "There is still the truth here: the cuts to Medicare in the President\'s plans don\'t hurt beneficiaries. The cuts will extend the solvency of the Medicare trust fund because they save the program money in the long term. Romney\'s plan would make Medicare insolvent by 2016, the end of his first presidential term, if he wins. And that does some serious damage to current retirees.",
+								"sourceValidity" : [
+									"Disprove"
+								]
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : null,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "2IDZ6R70G5R9GUHUD2574SSTV9H9PH",
+							"workerId" : "A2YA1291IHUFO9",
+							"hitId" : "2UNNQYN5F3Q0RXE48TEC4YB4B81D9S",
+							"assignmentStatus" : "Submitted",
+							"autoApprovalTime" : 1.352556428E12,
+							"acceptTime" : 1.349963537E12,
+							"submitTime" : 1.349964428E12,
+							"answer" : {
+								"sourceLink" : "http://www.dailykos.com/story/2012/10/04/1139914/-Romney-s-big-Medicare-lie-takes-center-stage-in-debate",
+								"sourceNote" : "This -- we have 4 million people on Medicare Advantage that will lose Medicare Advantage because of those $716 billion in cuts.\r\n\r\nI can\u2019t understand how you can cut Medicare $716 billion for current recipients of Medicare. [...]\r\n\r\nI want to take that $716 billion you\u2019ve cut and put it back into Medicare.",
+								"sourceValidity" : [
+									"Prove"
+								]
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : null,
+							"deadline" : null,
+							"rejectionTime" : null
+						}
+					],
+					"done" : true
+				},
+				"returnTime" : 1.349964453791E12,
+				"printOutput" : "hit completed: 2UNNQYN5F3Q0RXE48TEC4YB4B81D9S\n"
+			},
+			{
+				"creationTime" : 1.349964453797E12,
+				"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+				"returnValue" : "27QH88MQU6L5WS4NS8IX54AIL8ZBUA",
+				"returnTime" : 1.349964454144E12,
+				"printOutput" : "created HIT: 27QH88MQU6L5WS4NS8IX54AIL8ZBUA\n        url: https://www.mturk.com/mturk/preview?groupId=2CAVKCJ011K2FLSIJRHWE18N4888A9\n"
+			},
+			{
+				"creationTime" : 1.349964454145E12,
+				"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            stop();\n        }\n    }\n    var hit = mturk.getHIT(hitId);\n    if (!hit.done) {\n        stop();\n    }\n    verbosePrint(\"hit completed: \" + hitId);\n    return hit;\n}\n",
+				"returnValue" : {
+					"hitId" : "27QH88MQU6L5WS4NS8IX54AIL8ZBUA",
+					"hitTypeId" : "2CAVKCJ011K2FLSIJRHWE18N4888A9",
+					"title" : "Vote on whether a political claim is truthful",
+					"description" : "Determine the validity of political sources and fact-check a political claim",
+					"keywords" : null,
+					"reward" : 0.4,
+					"question" : "<QuestionForm xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2005-10-01/QuestionForm.xsd\">\n  <Overview>\n    <FormattedContent><![CDATA[<p><strong>Consider the below sources which either prove or disprove this factual claim:</strong></p>]]></FormattedContent>\n    <Text>Mitt Romney: I\'ll restore that $716 billion to Medicare</Text>\n  </Overview>\n  <Question>\n    <QuestionIdentifier>voteFacts0</QuestionIdentifier>\n    <IsRequired>true</IsRequired>\n    <QuestionContent>\n      <Text>Source 1: Prove</Text>\n      <Text>Link: http://www.economist.com/blogs/schumpeter/2012/10/wells-fargo-and-mortgages</Text>\n      <Text>Description: SO FAR Wells Fargo has been the one large American bank that has seemed to escape high profile legal attacks. That ended on October 8th with a civil complaint filed in a New York federal court that accused Wells of systematically defrauding the federal government\u2019s mortgage insurance programme for a decade, stopping only after the receipt of a subpoena in 2011.</Text>\n      <Text>Please visit the source URL and investigate the validity of the source. \n                        How strong is this piece of evidence, on a scale of 1 to 10 from weak to strong?</Text>\n    </QuestionContent>\n    <AnswerSpecification>\n      <FreeTextAnswer>\n        <Constraints>\n          <IsNumeric maxValue=\"10\" minValue=\"1\"/>\n        </Constraints>\n        <NumberOfLinesSuggestion>1</NumberOfLinesSuggestion>\n      </FreeTextAnswer>\n    </AnswerSpecification>\n  </Question>\n  <Question>\n    <QuestionIdentifier>voteFacts1</QuestionIdentifier>\n    <IsRequired>true</IsRequired>\n    <QuestionContent>\n      <Text>Source 2: Disprove</Text>\n      <Text>Link: http://www.dailykos.com/story/2012/10/04/1139914/-Romney-s-big-Medicare-lie-takes-center-stage-in-debate</Text>\n      <Text>Description: There is still the truth here: the cuts to Medicare in the President\'s plans don\'t hurt beneficiaries. The cuts will extend the solvency of the Medicare trust fund because they save the program money in the long term. Romney\'s plan would make Medicare insolvent by 2016, the end of his first presidential term, if he wins. And that does some serious damage to current retirees.</Text>\n      <Text>Please visit the source URL and investigate the validity of the source. \n                        How strong is this piece of evidence, on a scale of 1 to 10 from weak to strong?</Text>\n    </QuestionContent>\n    <AnswerSpecification>\n      <FreeTextAnswer>\n        <Constraints>\n          <IsNumeric maxValue=\"10\" minValue=\"1\"/>\n        </Constraints>\n        <NumberOfLinesSuggestion>1</NumberOfLinesSuggestion>\n      </FreeTextAnswer>\n    </AnswerSpecification>\n  </Question>\n  <Question>\n    <QuestionIdentifier>voteFactsDup1</QuestionIdentifier>\n    <IsRequired>true</IsRequired>\n    <QuestionContent>\n      <Text>Is this source a duplicate of a previous source?</Text>\n    </QuestionContent>\n    <AnswerSpecification>\n      <SelectionAnswer>\n        <Selections>\n          <Selection>\n            <SelectionIdentifier>Yes</SelectionIdentifier>\n            <Text>Yes</Text>\n          </Selection>\n          <Selection>\n            <SelectionIdentifier>No</SelectionIdentifier>\n            <Text>No</Text>\n          </Selection>\n        </Selections>\n      </SelectionAnswer>\n    </AnswerSpecification>\n  </Question>\n  <Question>\n    <QuestionIdentifier>voteFacts2</QuestionIdentifier>\n    <IsRequired>true</IsRequired>\n    <QuestionContent>\n      <Text>Source 3: Prove</Text>\n      <Text>Link: http://news.yahoo.com/presidential-debate-101-romney-716-billion-medicare-cuts-210258372.html</Text>\n      <Text>Description: \"If the president were to be reelected you\'re going to see a $716 billion cut to Medicare,\" Romney said. \"You\u2019ll have 4 million people who will lose Medicare Advantage. You\u2019ll have hospitals and providers that\u2019ll no longer accept Medicare patients. I\u2019ll restore that $716 billion to Medicare.\"</Text>\n      <Text>Please visit the source URL and investigate the validity of the source. \n                        How strong is this piece of evidence, on a scale of 1 to 10 from weak to strong?</Text>\n    </QuestionContent>\n    <AnswerSpecification>\n      <FreeTextAnswer>\n        <Constraints>\n          <IsNumeric maxValue=\"10\" minValue=\"1\"/>\n        </Constraints>\n        <NumberOfLinesSuggestion>1</NumberOfLinesSuggestion>\n      </FreeTextAnswer>\n    </AnswerSpecification>\n  </Question>\n  <Question>\n    <QuestionIdentifier>voteFactsDup2</QuestionIdentifier>\n    <IsRequired>true</IsRequired>\n    <QuestionContent>\n      <Text>Is this source a duplicate of a previous source?</Text>\n    </QuestionContent>\n    <AnswerSpecification>\n      <SelectionAnswer>\n        <Selections>\n          <Selection>\n            <SelectionIdentifier>Yes</SelectionIdentifier>\n            <Text>Yes</Text>\n          </Selection>\n          <Selection>\n            <SelectionIdentifier>No</SelectionIdentifier>\n            <Text>No</Text>\n          </Selection>\n        </Selections>\n      </SelectionAnswer>\n    </AnswerSpecification>\n  </Question>\n  <Question>\n    <QuestionIdentifier>voteFactsFinal</QuestionIdentifier>\n    <IsRequired>true</IsRequired>\n    <QuestionContent>\n      <Text>After considering each of the above sources, how true is this factual claim, \n                on a scale of 1 to 10 from false to true?</Text>\n    </QuestionContent>\n    <AnswerSpecification>\n      <FreeTextAnswer>\n        <Constraints>\n          <IsNumeric maxValue=\"10\" minValue=\"1\"/>\n        </Constraints>\n        <NumberOfLinesSuggestion>1</NumberOfLinesSuggestion>\n      </FreeTextAnswer>\n    </AnswerSpecification>\n  </Question>\n</QuestionForm>",
+					"maxAssignments" : 3,
+					"assignmentDurationInSeconds" : 600,
+					"autoApprovalDelayInSeconds" : 2592000,
+					"requesterAnnotation" : null,
+					"hitStatus" : "Reviewable",
+					"hitReviewStatus" : "NotReviewed",
+					"creationTime" : 1.349964454E12,
+					"expiration" : 1.350569254E12,
+					"assignments" : [
+						{
+							"assignmentId" : "2LVQ39Z0B6UTWN2FO2JT3RKGX7YMXI",
+							"workerId" : "A3QV1H6T7CUNUE",
+							"hitId" : "27QH88MQU6L5WS4NS8IX54AIL8ZBUA",
+							"assignmentStatus" : "Submitted",
+							"autoApprovalTime" : 1.352556828E12,
+							"acceptTime" : 1.349964767E12,
+							"submitTime" : 1.349964828E12,
+							"answer" : {
+								"voteFacts0" : "4",
+								"voteFacts1" : "6",
+								"voteFactsDup1" : [
+									"No"
+								],
+								"voteFacts2" : "8",
+								"voteFactsDup2" : [
+									"No"
+								],
+								"voteFactsFinal" : "6"
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : null,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "21KQV66RLPHI1KQ66HMKQ62NR186EJ",
+							"workerId" : "A1IJ91VS2UTC8B",
+							"hitId" : "27QH88MQU6L5WS4NS8IX54AIL8ZBUA",
+							"assignmentStatus" : "Submitted",
+							"autoApprovalTime" : 1.352557054E12,
+							"acceptTime" : 1.349964557E12,
+							"submitTime" : 1.349965054E12,
+							"answer" : {
+								"voteFacts0" : "9",
+								"voteFacts1" : "8",
+								"voteFactsDup1" : [
+									"No"
+								],
+								"voteFacts2" : "9",
+								"voteFactsDup2" : [
+									"No"
+								],
+								"voteFactsFinal" : "8"
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : null,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "2IBHSTLB3L0FJ0ITYIAERREVMGXUII",
+							"workerId" : "ABJ4ZO61EC4T",
+							"hitId" : "27QH88MQU6L5WS4NS8IX54AIL8ZBUA",
+							"assignmentStatus" : "Submitted",
+							"autoApprovalTime" : 1.352557087E12,
+							"acceptTime" : 1.349964785E12,
+							"submitTime" : 1.349965087E12,
+							"answer" : {
+								"voteFacts0" : "6",
+								"voteFacts1" : "9",
+								"voteFactsDup1" : [
+									"No"
+								],
+								"voteFacts2" : "8",
+								"voteFactsDup2" : [
+									"No"
+								],
+								"voteFactsFinal" : "7"
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : null,
+							"deadline" : null,
+							"rejectionTime" : null
+						}
+					],
+					"done" : true
+				},
+				"returnTime" : 1.349965119039E12,
+				"printOutput" : "hit completed: 27QH88MQU6L5WS4NS8IX54AIL8ZBUA\n"
+			},
+			{
+				"creationTime" : 1.349965119043E12,
+				"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+				"returnValue" : "2BXJ51Y7QEOZNFZ3BJJTUOFXT6KCFJ",
+				"returnTime" : 1.349965119361E12,
+				"printOutput" : "created HIT: 2BXJ51Y7QEOZNFZ3BJJTUOFXT6KCFJ\n        url: https://www.mturk.com/mturk/preview?groupId=2CAVKCJ011K2FLSIJRHWE18N4888A9\n"
+			},
+			{
+				"creationTime" : 1.349965119362E12,
 				"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            stop();\n        }\n    }\n    var hit = mturk.getHIT(hitId);\n    if (!hit.done) {\n        stop();\n    }\n    verbosePrint(\"hit completed: \" + hitId);\n    return hit;\n}\n"
 			}
 		]
 	}
 }
 __safetyCounters = {
-	"moneySpent" : 8.25,
-	"hitsCreated" : 7
+	"moneySpent" : 10.649999999999999,
+	"hitsCreated" : 9
 }
-// end:98ee
+// end:1b41
