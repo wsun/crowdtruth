@@ -1,4 +1,4 @@
-// begin:c170
+// begin:97c7
 __HITs = {
 	"real:2MQB727M0IGFSYMCG56S3F4VKHHDYC" : {
 		"url" : "https://www.mturk.com/mturk/preview?groupId=2HHHOVR14IXKWJUKCO5C4A6X30287I"
@@ -31,6 +31,9 @@ __HITs = {
 		"url" : "https://www.mturk.com/mturk/preview?groupId=2CAVKCJ011K2FLSIJRHWE18N4888A9"
 	},
 	"real:2GRRNDWIOV1SF9WEN07U93YD11GWHB" : {
+		"url" : "https://www.mturk.com/mturk/preview?groupId=2CAVKCJ011K2FLSIJRHWE18N4888A9"
+	},
+	"real:2787Q67051QKK40CC0HC9XMGKTPEYD" : {
 		"url" : "https://www.mturk.com/mturk/preview?groupId=2CAVKCJ011K2FLSIJRHWE18N4888A9"
 	}
 }
@@ -1041,13 +1044,428 @@ __stackFrames = {
 			},
 			{
 				"creationTime" : 1.34996789997E12,
-				"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            stop();\n        }\n    }\n    var hit = mturk.getHIT(hitId);\n    if (!hit.done) {\n        stop();\n    }\n    verbosePrint(\"hit completed: \" + hitId);\n    return hit;\n}\n"
+				"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            stop();\n        }\n    }\n    var hit = mturk.getHIT(hitId);\n    if (!hit.done) {\n        stop();\n    }\n    verbosePrint(\"hit completed: \" + hitId);\n    return hit;\n}\n",
+				"returnValue" : {
+					"hitId" : "2GRRNDWIOV1SF9WEN07U93YD11GWHB",
+					"hitTypeId" : "2CAVKCJ011K2FLSIJRHWE18N4888A9",
+					"title" : "Vote on whether a political claim is truthful",
+					"description" : "Determine the validity of political sources and fact-check a political claim",
+					"keywords" : null,
+					"reward" : 0.4,
+					"question" : "<QuestionForm xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2005-10-01/QuestionForm.xsd\">\n  <Overview>\n    <FormattedContent><![CDATA[<p><strong>Consider the below sources which either prove or disprove this factual claim:</strong></p>]]></FormattedContent>\n    <Text>Mitt Romney: If I\'m elected, we won\'t have \'Obamacare.\'</Text>\n  </Overview>\n  <Question>\n    <QuestionIdentifier>voteFacts0</QuestionIdentifier>\n    <IsRequired>true</IsRequired>\n    <QuestionContent>\n      <Text>Source 1: Prove</Text>\n      <Text>Link: http://www.theatlanticwire.com/politics/2012/10/recap-first-presidential-debate/57586/#</Text>\n      <Text>Description: Romney says: \"\"If I\'m elected we won\'t have Obamacare. ... If the president were reelected, you\'ll see a $716 billion cut to Medicare... If I\'m reelected, I\'ll restore those cuts. ... \"</Text>\n      <Text>Please visit the source URL and investigate the validity of the source. \n                        How strong is this piece of evidence, on a scale of 1 to 10 from weak to strong?</Text>\n    </QuestionContent>\n    <AnswerSpecification>\n      <FreeTextAnswer>\n        <Constraints>\n          <IsNumeric maxValue=\"10\" minValue=\"1\"/>\n        </Constraints>\n        <NumberOfLinesSuggestion>1</NumberOfLinesSuggestion>\n      </FreeTextAnswer>\n    </AnswerSpecification>\n  </Question>\n  <Question>\n    <QuestionIdentifier>voteFacts1</QuestionIdentifier>\n    <IsRequired>true</IsRequired>\n    <QuestionContent>\n      <Text>Source 2: Prove</Text>\n      <Text>Link: http://www.newyorker.com/online/blogs/johncassidy/2012/10/obamas-big-challenge-can-he-bounce-back.html</Text>\n      <Text>Description: here are four reasons why Obamacare should be repealed; here are three reasons why Obama\u2019s Medicare plan is a bad one</Text>\n      <Text>Please visit the source URL and investigate the validity of the source. \n                        How strong is this piece of evidence, on a scale of 1 to 10 from weak to strong?</Text>\n    </QuestionContent>\n    <AnswerSpecification>\n      <FreeTextAnswer>\n        <Constraints>\n          <IsNumeric maxValue=\"10\" minValue=\"1\"/>\n        </Constraints>\n        <NumberOfLinesSuggestion>1</NumberOfLinesSuggestion>\n      </FreeTextAnswer>\n    </AnswerSpecification>\n  </Question>\n  <Question>\n    <QuestionIdentifier>voteFactsDup1</QuestionIdentifier>\n    <IsRequired>true</IsRequired>\n    <QuestionContent>\n      <Text>Is this source a duplicate of a previous source?</Text>\n    </QuestionContent>\n    <AnswerSpecification>\n      <SelectionAnswer>\n        <Selections>\n          <Selection>\n            <SelectionIdentifier>Yes</SelectionIdentifier>\n            <Text>Yes</Text>\n          </Selection>\n          <Selection>\n            <SelectionIdentifier>No</SelectionIdentifier>\n            <Text>No</Text>\n          </Selection>\n        </Selections>\n      </SelectionAnswer>\n    </AnswerSpecification>\n  </Question>\n  <Question>\n    <QuestionIdentifier>voteFacts2</QuestionIdentifier>\n    <IsRequired>true</IsRequired>\n    <QuestionContent>\n      <Text>Source 3: Prove</Text>\n      <Text>Link: http://www.huffingtonpost.com/2012/09/09/mitt-romney-obamacare-_n_1868385.html</Text>\n      <Text>Description: As a candidate for president in 2012, however, he has pledged to repeal the entirety of Obama\'s Affordable Care Act, a law very much based on Romney\'s Mass-Care model.</Text>\n      <Text>Please visit the source URL and investigate the validity of the source. \n                        How strong is this piece of evidence, on a scale of 1 to 10 from weak to strong?</Text>\n    </QuestionContent>\n    <AnswerSpecification>\n      <FreeTextAnswer>\n        <Constraints>\n          <IsNumeric maxValue=\"10\" minValue=\"1\"/>\n        </Constraints>\n        <NumberOfLinesSuggestion>1</NumberOfLinesSuggestion>\n      </FreeTextAnswer>\n    </AnswerSpecification>\n  </Question>\n  <Question>\n    <QuestionIdentifier>voteFactsDup2</QuestionIdentifier>\n    <IsRequired>true</IsRequired>\n    <QuestionContent>\n      <Text>Is this source a duplicate of a previous source?</Text>\n    </QuestionContent>\n    <AnswerSpecification>\n      <SelectionAnswer>\n        <Selections>\n          <Selection>\n            <SelectionIdentifier>Yes</SelectionIdentifier>\n            <Text>Yes</Text>\n          </Selection>\n          <Selection>\n            <SelectionIdentifier>No</SelectionIdentifier>\n            <Text>No</Text>\n          </Selection>\n        </Selections>\n      </SelectionAnswer>\n    </AnswerSpecification>\n  </Question>\n  <Question>\n    <QuestionIdentifier>voteFactsFinal</QuestionIdentifier>\n    <IsRequired>true</IsRequired>\n    <QuestionContent>\n      <Text>After considering each of the above sources, how true is this factual claim, \n                on a scale of 1 to 10 from false to true?</Text>\n    </QuestionContent>\n    <AnswerSpecification>\n      <FreeTextAnswer>\n        <Constraints>\n          <IsNumeric maxValue=\"10\" minValue=\"1\"/>\n        </Constraints>\n        <NumberOfLinesSuggestion>1</NumberOfLinesSuggestion>\n      </FreeTextAnswer>\n    </AnswerSpecification>\n  </Question>\n</QuestionForm>",
+					"maxAssignments" : 3,
+					"assignmentDurationInSeconds" : 600,
+					"autoApprovalDelayInSeconds" : 2592000,
+					"requesterAnnotation" : null,
+					"hitStatus" : "Reviewable",
+					"hitReviewStatus" : "NotReviewed",
+					"creationTime" : 1.3499679E12,
+					"expiration" : 1.3505727E12,
+					"assignments" : [
+						{
+							"assignmentId" : "29UMIKMN9U8PHFCJ33NXQ3SU6TVSBU",
+							"workerId" : "A3CCBRS9NU71R8",
+							"hitId" : "2GRRNDWIOV1SF9WEN07U93YD11GWHB",
+							"assignmentStatus" : "Submitted",
+							"autoApprovalTime" : 1.352560273E12,
+							"acceptTime" : 1.349968E12,
+							"submitTime" : 1.349968273E12,
+							"answer" : {
+								"voteFacts0" : "8",
+								"voteFacts1" : "9",
+								"voteFactsDup1" : [
+									"No"
+								],
+								"voteFacts2" : "9",
+								"voteFactsDup2" : [
+									"No"
+								],
+								"voteFactsFinal" : "9"
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : null,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "2TAA0RYNJ92NR1VBFIDJ1UHY4DQ94V",
+							"workerId" : "A2ZF7QL8IRN6CR",
+							"hitId" : "2GRRNDWIOV1SF9WEN07U93YD11GWHB",
+							"assignmentStatus" : "Submitted",
+							"autoApprovalTime" : 1.352560659E12,
+							"acceptTime" : 1.349968519E12,
+							"submitTime" : 1.349968659E12,
+							"answer" : {
+								"voteFacts0" : "7",
+								"voteFacts1" : "5",
+								"voteFactsDup1" : [
+									"No"
+								],
+								"voteFacts2" : "6",
+								"voteFactsDup2" : [
+									"No"
+								],
+								"voteFactsFinal" : "5"
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : null,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "2CB1LY58B727UHRRPR8D96YF06PT8M",
+							"workerId" : "A39XSGSKY340XB",
+							"hitId" : "2GRRNDWIOV1SF9WEN07U93YD11GWHB",
+							"assignmentStatus" : "Submitted",
+							"autoApprovalTime" : 1.352561709E12,
+							"acceptTime" : 1.349969532E12,
+							"submitTime" : 1.349969709E12,
+							"answer" : {
+								"voteFacts0" : "7",
+								"voteFacts1" : "3",
+								"voteFactsDup1" : [
+									"No"
+								],
+								"voteFacts2" : "8",
+								"voteFactsDup2" : [
+									"No"
+								],
+								"voteFactsFinal" : "9"
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : null,
+							"deadline" : null,
+							"rejectionTime" : null
+						}
+					],
+					"done" : true
+				},
+				"returnTime" : 1.349970120058E12,
+				"printOutput" : "hit completed: 2GRRNDWIOV1SF9WEN07U93YD11GWHB\n"
+			},
+			{
+				"creationTime" : 1.349970120063E12,
+				"onceFunc" : "\nfunction () {\n    return mturk.createHITRaw(params);\n}\n",
+				"returnValue" : "2787Q67051QKK40CC0HC9XMGKTPEYD",
+				"returnTime" : 1.349970120281E12,
+				"printOutput" : "created HIT: 2787Q67051QKK40CC0HC9XMGKTPEYD\n        url: https://www.mturk.com/mturk/preview?groupId=2CAVKCJ011K2FLSIJRHWE18N4888A9\n"
+			},
+			{
+				"creationTime" : 1.349970120281E12,
+				"onceFunc" : "\nfunction () {\n    if (!me.waitForHIT_callCount) {\n        me.waitForHIT_callCount = 0;\n        var a = me.getReviewableHITs(1);\n        if (a.totalNumResults == a.length) {\n            me.waitForHIT_reviewableHITs = new Set(a);\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n        me.waitForHIT_waitCount = Math.ceil(a.totalNumResults / 100);\n    }\n    me.waitForHIT_callCount++;\n    if (me.waitForHIT_callCount >= me.waitForHIT_waitCount) {\n        if (!me.waitForHIT_reviewableHITs || (time() > me.waitForHIT_reviewableHITsTime + (1000 * 60))) {\n            me.waitForHIT_reviewableHITs = new Set(me.getReviewableHITs());\n            me.waitForHIT_reviewableHITsTime = time();\n        }\n    }\n    if (me.waitForHIT_reviewableHITs) {\n        if (!me.waitForHIT_reviewableHITs[hitId]) {\n            stop();\n        }\n    }\n    var hit = mturk.getHIT(hitId);\n    if (!hit.done) {\n        stop();\n    }\n    verbosePrint(\"hit completed: \" + hitId);\n    return hit;\n}\n",
+				"returnValue" : {
+					"hitId" : "2787Q67051QKK40CC0HC9XMGKTPEYD",
+					"hitTypeId" : "2CAVKCJ011K2FLSIJRHWE18N4888A9",
+					"title" : "Vote on whether a political claim is truthful",
+					"description" : "Determine the validity of political sources and fact-check a political claim",
+					"keywords" : null,
+					"reward" : 0.4,
+					"question" : "<QuestionForm xmlns=\"http://mechanicalturk.amazonaws.com/AWSMechanicalTurkDataSchemas/2005-10-01/QuestionForm.xsd\">\n  <Overview>\n    <FormattedContent><![CDATA[<p><strong>Consider the below sources which either prove or disprove this factual claim:</strong></p>]]></FormattedContent>\n    <Text>Mitt Romney: I\'ll restore that $716 billion to Medicare.</Text>\n  </Overview>\n  <Question>\n    <QuestionIdentifier>voteFacts0</QuestionIdentifier>\n    <IsRequired>true</IsRequired>\n    <QuestionContent>\n      <Text>Source 1: Prove</Text>\n      <Text>Link: http://www.csmonitor.com/USA/DC-Decoder/2012/1004/Presidential-debate-101-Is-Romney-right-about-716-billion-in-Medicare-cuts</Text>\n      <Text>Description: \"If the president were to be reelected you\'re going to see a $716 billion cut to Medicare,\" Romney said. \"You\u2019ll have 4 million people who will lose Medicare Advantage. You\u2019ll have hospitals and providers that\u2019ll no longer accept Medicare patients. I\u2019ll restore that $716 billion to Medicare.\"</Text>\n      <Text>Please visit the source URL and investigate the validity of the source. \n                        How strong is this piece of evidence, on a scale of 1 to 10 from weak to strong?</Text>\n    </QuestionContent>\n    <AnswerSpecification>\n      <FreeTextAnswer>\n        <Constraints>\n          <IsNumeric maxValue=\"10\" minValue=\"1\"/>\n        </Constraints>\n        <NumberOfLinesSuggestion>1</NumberOfLinesSuggestion>\n      </FreeTextAnswer>\n    </AnswerSpecification>\n  </Question>\n  <Question>\n    <QuestionIdentifier>voteFacts1</QuestionIdentifier>\n    <IsRequired>true</IsRequired>\n    <QuestionContent>\n      <Text>Source 2: Disprove</Text>\n      <Text>Link: http://www.dailykos.com/story/2012/10/04/1139914/-Romney-s-big-Medicare-lie-takes-center-stage-in-debate</Text>\n      <Text>Description: There is still the truth here: the cuts to Medicare in the President\'s plans don\'t hurt beneficiaries. The cuts will extend the solvency of the Medicare trust fund because they save the program money in the long term. Romney\'s plan would make Medicare insolvent by 2016, the end of his first presidential term, if he wins. And that does some serious damage to current retirees.</Text>\n      <Text>Please visit the source URL and investigate the validity of the source. \n                        How strong is this piece of evidence, on a scale of 1 to 10 from weak to strong?</Text>\n    </QuestionContent>\n    <AnswerSpecification>\n      <FreeTextAnswer>\n        <Constraints>\n          <IsNumeric maxValue=\"10\" minValue=\"1\"/>\n        </Constraints>\n        <NumberOfLinesSuggestion>1</NumberOfLinesSuggestion>\n      </FreeTextAnswer>\n    </AnswerSpecification>\n  </Question>\n  <Question>\n    <QuestionIdentifier>voteFactsDup1</QuestionIdentifier>\n    <IsRequired>true</IsRequired>\n    <QuestionContent>\n      <Text>Is this source a duplicate of a previous source?</Text>\n    </QuestionContent>\n    <AnswerSpecification>\n      <SelectionAnswer>\n        <Selections>\n          <Selection>\n            <SelectionIdentifier>Yes</SelectionIdentifier>\n            <Text>Yes</Text>\n          </Selection>\n          <Selection>\n            <SelectionIdentifier>No</SelectionIdentifier>\n            <Text>No</Text>\n          </Selection>\n        </Selections>\n      </SelectionAnswer>\n    </AnswerSpecification>\n  </Question>\n  <Question>\n    <QuestionIdentifier>voteFacts2</QuestionIdentifier>\n    <IsRequired>true</IsRequired>\n    <QuestionContent>\n      <Text>Source 3: Prove</Text>\n      <Text>Link: http://www.dailykos.com/story/2012/10/04/1139914/-Romney-s-big-Medicare-lie-takes-center-stage-in-debate</Text>\n      <Text>Description: This -- we have 4 million people on Medicare Advantage that will lose Medicare Advantage because of those $716 billion in cuts.&#13;\n&#13;\nI can\u2019t understand how you can cut Medicare $716 billion for current recipients of Medicare. [...]&#13;\n&#13;\nI want to take that $716 billion you\u2019ve cut and put it back into Medicare.</Text>\n      <Text>Please visit the source URL and investigate the validity of the source. \n                        How strong is this piece of evidence, on a scale of 1 to 10 from weak to strong?</Text>\n    </QuestionContent>\n    <AnswerSpecification>\n      <FreeTextAnswer>\n        <Constraints>\n          <IsNumeric maxValue=\"10\" minValue=\"1\"/>\n        </Constraints>\n        <NumberOfLinesSuggestion>1</NumberOfLinesSuggestion>\n      </FreeTextAnswer>\n    </AnswerSpecification>\n  </Question>\n  <Question>\n    <QuestionIdentifier>voteFactsDup2</QuestionIdentifier>\n    <IsRequired>true</IsRequired>\n    <QuestionContent>\n      <Text>Is this source a duplicate of a previous source?</Text>\n    </QuestionContent>\n    <AnswerSpecification>\n      <SelectionAnswer>\n        <Selections>\n          <Selection>\n            <SelectionIdentifier>Yes</SelectionIdentifier>\n            <Text>Yes</Text>\n          </Selection>\n          <Selection>\n            <SelectionIdentifier>No</SelectionIdentifier>\n            <Text>No</Text>\n          </Selection>\n        </Selections>\n      </SelectionAnswer>\n    </AnswerSpecification>\n  </Question>\n  <Question>\n    <QuestionIdentifier>voteFactsFinal</QuestionIdentifier>\n    <IsRequired>true</IsRequired>\n    <QuestionContent>\n      <Text>After considering each of the above sources, how true is this factual claim, \n                on a scale of 1 to 10 from false to true?</Text>\n    </QuestionContent>\n    <AnswerSpecification>\n      <FreeTextAnswer>\n        <Constraints>\n          <IsNumeric maxValue=\"10\" minValue=\"1\"/>\n        </Constraints>\n        <NumberOfLinesSuggestion>1</NumberOfLinesSuggestion>\n      </FreeTextAnswer>\n    </AnswerSpecification>\n  </Question>\n</QuestionForm>",
+					"maxAssignments" : 3,
+					"assignmentDurationInSeconds" : 600,
+					"autoApprovalDelayInSeconds" : 2592000,
+					"requesterAnnotation" : null,
+					"hitStatus" : "Reviewable",
+					"hitReviewStatus" : "NotReviewed",
+					"creationTime" : 1.34997012E12,
+					"expiration" : 1.35057492E12,
+					"assignments" : [
+						{
+							"assignmentId" : "298KPEIB9BAWT9V8ZXWV5UD3U42X0N",
+							"workerId" : "A1Q94VY4JPFRXQ",
+							"hitId" : "2787Q67051QKK40CC0HC9XMGKTPEYD",
+							"assignmentStatus" : "Submitted",
+							"autoApprovalTime" : 1.352562323E12,
+							"acceptTime" : 1.34997029E12,
+							"submitTime" : 1.349970323E12,
+							"answer" : {
+								"voteFacts0" : "8",
+								"voteFacts1" : "5",
+								"voteFactsDup1" : [
+									"Yes"
+								],
+								"voteFacts2" : "7",
+								"voteFactsDup2" : [
+									"Yes"
+								],
+								"voteFactsFinal" : "8"
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : null,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "2TCM05BMJTUH6DBR3W0RI7S54XCFKK",
+							"workerId" : "A1COLRJGO2VZW5",
+							"hitId" : "2787Q67051QKK40CC0HC9XMGKTPEYD",
+							"assignmentStatus" : "Submitted",
+							"autoApprovalTime" : 1.352562454E12,
+							"acceptTime" : 1.349970225E12,
+							"submitTime" : 1.349970454E12,
+							"answer" : {
+								"voteFacts0" : "9",
+								"voteFacts1" : "9",
+								"voteFactsDup1" : [
+									"No"
+								],
+								"voteFacts2" : "9",
+								"voteFactsDup2" : [
+									"Yes"
+								],
+								"voteFactsFinal" : "7"
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : null,
+							"deadline" : null,
+							"rejectionTime" : null
+						},
+						{
+							"assignmentId" : "28349F9SSSHX9ISZXZK5P5F8RFZTXV",
+							"workerId" : "AWE8DF2ZY0LB2",
+							"hitId" : "2787Q67051QKK40CC0HC9XMGKTPEYD",
+							"assignmentStatus" : "Submitted",
+							"autoApprovalTime" : 1.3525626E12,
+							"acceptTime" : 1.349970412E12,
+							"submitTime" : 1.3499706E12,
+							"answer" : {
+								"voteFacts0" : "7",
+								"voteFacts1" : "8",
+								"voteFactsDup1" : [
+									"No"
+								],
+								"voteFacts2" : "7",
+								"voteFactsDup2" : [
+									"Yes"
+								],
+								"voteFactsFinal" : "7"
+							},
+							"requesterFeedback" : null,
+							"approvalTime" : null,
+							"deadline" : null,
+							"rejectionTime" : null
+						}
+					],
+					"done" : true
+				},
+				"returnTime" : 1.349979649105E12,
+				"printOutput" : "hit completed: 2787Q67051QKK40CC0HC9XMGKTPEYD\n"
+			},
+			{
+				"creationTime" : 1.349979649143E12,
+				"onceFunc" : "\nfunction () {\n    return mturk.approveAssignmentRaw(assignment, reason);\n}\n",
+				"returnValue" : undefined,
+				"returnTime" : 1.349979649351E12,
+				"printOutput" : "approved assignment 2A9FL42J1LY5GSGDHTRIOFKHLBZO3K\n"
+			},
+			{
+				"creationTime" : 1.349979649351E12,
+				"onceFunc" : "\nfunction () {\n    return mturk.approveAssignmentRaw(assignment, reason);\n}\n",
+				"returnValue" : undefined,
+				"returnTime" : 1.349979649672E12,
+				"printOutput" : "approved assignment 2CWSMEZZ2MIKU4I5IW0YB8TW47BM5T\n"
+			},
+			{
+				"creationTime" : 1.349979649673E12,
+				"onceFunc" : "\nfunction () {\n    return mturk.approveAssignmentRaw(assignment, reason);\n}\n",
+				"returnValue" : undefined,
+				"returnTime" : 1.349979649793E12,
+				"printOutput" : "approved assignment 2ZBWKUDD8XMBB7CK97262TO61E9CNT\n"
+			},
+			{
+				"creationTime" : 1.349979649794E12,
+				"onceFunc" : "\nfunction () {\n    return mturk.approveAssignmentRaw(assignment, reason);\n}\n",
+				"returnValue" : undefined,
+				"returnTime" : 1.349979650082E12,
+				"printOutput" : "approved assignment 2LVQ39Z0B6UTWN2FO2JT3RKGX7YMXI\n"
+			},
+			{
+				"creationTime" : 1.349979650083E12,
+				"onceFunc" : "\nfunction () {\n    return mturk.approveAssignmentRaw(assignment, reason);\n}\n",
+				"returnValue" : undefined,
+				"returnTime" : 1.349979650387E12,
+				"printOutput" : "approved assignment 21KQV66RLPHI1KQ66HMKQ62NR186EJ\n"
+			},
+			{
+				"creationTime" : 1.349979650388E12,
+				"onceFunc" : "\nfunction () {\n    return mturk.approveAssignmentRaw(assignment, reason);\n}\n",
+				"returnValue" : undefined,
+				"returnTime" : 1.34997965056E12,
+				"printOutput" : "approved assignment 2IBHSTLB3L0FJ0ITYIAERREVMGXUII\n"
+			},
+			{
+				"creationTime" : 1.349979650562E12,
+				"onceFunc" : "\nfunction () {\n    return mturk.approveAssignmentRaw(assignment, reason);\n}\n",
+				"returnValue" : undefined,
+				"returnTime" : 1.349979651134E12,
+				"printOutput" : "approved assignment 2D15SW6NG1FSB47YTIPF9FZS7VXIWS\n"
+			},
+			{
+				"creationTime" : 1.349979651135E12,
+				"onceFunc" : "\nfunction () {\n    return mturk.approveAssignmentRaw(assignment, reason);\n}\n",
+				"returnValue" : undefined,
+				"returnTime" : 1.349979651268E12,
+				"printOutput" : "approved assignment 2C5IPDOBDDP8X05V4K485MB3YD61CC\n"
+			},
+			{
+				"creationTime" : 1.349979651268E12,
+				"onceFunc" : "\nfunction () {\n    return mturk.approveAssignmentRaw(assignment, reason);\n}\n",
+				"returnValue" : undefined,
+				"returnTime" : 1.349979651821E12,
+				"printOutput" : "approved assignment 2QGOGQSCM6IAIJ1PS1LU80OQSU6HHZ\n"
+			},
+			{
+				"creationTime" : 1.349979651822E12,
+				"onceFunc" : "\nfunction () {\n    return mturk.approveAssignmentRaw(assignment, reason);\n}\n",
+				"returnValue" : undefined,
+				"returnTime" : 1.349979652014E12,
+				"printOutput" : "approved assignment 2UXUFJ51Y7QEWGO90ZSC0TMON8XDAN\n"
+			},
+			{
+				"creationTime" : 1.349979652015E12,
+				"onceFunc" : "\nfunction () {\n    return mturk.approveAssignmentRaw(assignment, reason);\n}\n",
+				"returnValue" : undefined,
+				"returnTime" : 1.349979652243E12,
+				"printOutput" : "approved assignment 2ESSPW1INMHG67DUDU1BEBFMNQV4HD\n"
+			},
+			{
+				"creationTime" : 1.349979652244E12,
+				"onceFunc" : "\nfunction () {\n    return mturk.approveAssignmentRaw(assignment, reason);\n}\n",
+				"returnValue" : undefined,
+				"returnTime" : 1.349979652537E12,
+				"printOutput" : "approved assignment 2Z9IT3HVWAVKQNBYTXT1F2Z9H1OEM2\n"
+			},
+			{
+				"creationTime" : 1.349979652538E12,
+				"onceFunc" : "\nfunction () {\n    return mturk.approveAssignmentRaw(assignment, reason);\n}\n",
+				"returnValue" : undefined,
+				"returnTime" : 1.349979652651E12,
+				"printOutput" : "approved assignment 2NXNQYN5F3Q0RXE48TEC4YB4HP69DT\n"
+			},
+			{
+				"creationTime" : 1.349979652652E12,
+				"onceFunc" : "\nfunction () {\n    return mturk.approveAssignmentRaw(assignment, reason);\n}\n",
+				"returnValue" : undefined,
+				"returnTime" : 1.349979652816E12,
+				"printOutput" : "approved assignment 2W2ZHHRRLFQ0W4W61OSKPO9EO18OFX\n"
+			},
+			{
+				"creationTime" : 1.349979652818E12,
+				"onceFunc" : "\nfunction () {\n    return mturk.approveAssignmentRaw(assignment, reason);\n}\n",
+				"returnValue" : undefined,
+				"returnTime" : 1.349979652931E12,
+				"printOutput" : "approved assignment 2BTK274J79KQ4NAJXBXU5FCDCG0HFA\n"
+			},
+			{
+				"creationTime" : 1.349979652932E12,
+				"onceFunc" : "\nfunction () {\n    return mturk.approveAssignmentRaw(assignment, reason);\n}\n",
+				"returnValue" : undefined,
+				"returnTime" : 1.349979653162E12,
+				"printOutput" : "approved assignment 21U4SMEZZ2MIS3WK4FG9638T474L41\n"
+			},
+			{
+				"creationTime" : 1.349979653163E12,
+				"onceFunc" : "\nfunction () {\n    return mturk.approveAssignmentRaw(assignment, reason);\n}\n",
+				"returnValue" : undefined,
+				"returnTime" : 1.349979653461E12,
+				"printOutput" : "approved assignment 25I8H88MQU6LD5K6MPSR5X4AQUNAT5\n"
+			},
+			{
+				"creationTime" : 1.349979653462E12,
+				"onceFunc" : "\nfunction () {\n    return mturk.approveAssignmentRaw(assignment, reason);\n}\n",
+				"returnValue" : undefined,
+				"returnTime" : 1.349979653768E12,
+				"printOutput" : "approved assignment 2W6C1PC6SK9RRPEZ9PQEPMAAXXX1P4\n"
+			},
+			{
+				"creationTime" : 1.349979653769E12,
+				"onceFunc" : "\nfunction () {\n    return mturk.approveAssignmentRaw(assignment, reason);\n}\n",
+				"returnValue" : undefined,
+				"returnTime" : 1.349979653899E12,
+				"printOutput" : "approved assignment 2AGHOVR14IXKWJUKCO5C4A6XB9S87J\n"
+			},
+			{
+				"creationTime" : 1.3499796539E12,
+				"onceFunc" : "\nfunction () {\n    return mturk.approveAssignmentRaw(assignment, reason);\n}\n",
+				"returnValue" : undefined,
+				"returnTime" : 1.349979654177E12,
+				"printOutput" : "approved assignment 2D9VWAVKI62NR7BCH9Q9HQH6JVOQI6\n"
+			},
+			{
+				"creationTime" : 1.349979654178E12,
+				"onceFunc" : "\nfunction () {\n    return mturk.approveAssignmentRaw(assignment, reason);\n}\n",
+				"returnValue" : undefined,
+				"returnTime" : 1.349979654423E12,
+				"printOutput" : "approved assignment 2HYO33FDEY5CWD9WQYQ3GCRFTNAR0E\n"
+			},
+			{
+				"creationTime" : 1.349979654425E12,
+				"onceFunc" : "\nfunction () {\n    return mturk.approveAssignmentRaw(assignment, reason);\n}\n",
+				"returnValue" : undefined,
+				"returnTime" : 1.349979654549E12,
+				"printOutput" : "approved assignment 29UMIKMN9U8PHFCJ33NXQ3SU6TVSBU\n"
+			},
+			{
+				"creationTime" : 1.34997965455E12,
+				"onceFunc" : "\nfunction () {\n    return mturk.approveAssignmentRaw(assignment, reason);\n}\n",
+				"returnValue" : undefined,
+				"returnTime" : 1.349979654764E12,
+				"printOutput" : "approved assignment 2TAA0RYNJ92NR1VBFIDJ1UHY4DQ94V\n"
+			},
+			{
+				"creationTime" : 1.349979654765E12,
+				"onceFunc" : "\nfunction () {\n    return mturk.approveAssignmentRaw(assignment, reason);\n}\n",
+				"returnValue" : undefined,
+				"returnTime" : 1.349979654887E12,
+				"printOutput" : "approved assignment 2CB1LY58B727UHRRPR8D96YF06PT8M\n"
+			},
+			{
+				"creationTime" : 1.349979654888E12,
+				"onceFunc" : "\nfunction () {\n    return mturk.approveAssignmentRaw(assignment, reason);\n}\n",
+				"returnValue" : undefined,
+				"returnTime" : 1.349979655095E12,
+				"printOutput" : "approved assignment 2B4STMOFXRDSCZLCO54N5JFM9CFURL\n"
+			},
+			{
+				"creationTime" : 1.349979655096E12,
+				"onceFunc" : "\nfunction () {\n    return mturk.approveAssignmentRaw(assignment, reason);\n}\n",
+				"returnValue" : undefined,
+				"returnTime" : 1.349979655278E12,
+				"printOutput" : "approved assignment 2DI39Z0B6UTOEADP5ZKVZKGP431NYO\n"
+			},
+			{
+				"creationTime" : 1.349979655279E12,
+				"onceFunc" : "\nfunction () {\n    return mturk.approveAssignmentRaw(assignment, reason);\n}\n",
+				"returnValue" : undefined,
+				"returnTime" : 1.349979655611E12,
+				"printOutput" : "approved assignment 2IDZ6R70G5R9GUHUD2574SSTV9H9PH\n"
+			},
+			{
+				"creationTime" : 1.349979655612E12,
+				"onceFunc" : "\nfunction () {\n    return mturk.approveAssignmentRaw(assignment, reason);\n}\n",
+				"returnValue" : undefined,
+				"returnTime" : 1.349979655918E12,
+				"printOutput" : "approved assignment 298KPEIB9BAWT9V8ZXWV5UD3U42X0N\n"
+			},
+			{
+				"creationTime" : 1.349979655919E12,
+				"onceFunc" : "\nfunction () {\n    return mturk.approveAssignmentRaw(assignment, reason);\n}\n",
+				"returnValue" : undefined,
+				"returnTime" : 1.349979656024E12,
+				"printOutput" : "approved assignment 2TCM05BMJTUH6DBR3W0RI7S54XCFKK\n"
+			},
+			{
+				"creationTime" : 1.349979656025E12,
+				"onceFunc" : "\nfunction () {\n    return mturk.approveAssignmentRaw(assignment, reason);\n}\n",
+				"returnValue" : undefined,
+				"returnTime" : 1.349979656228E12,
+				"printOutput" : "approved assignment 28349F9SSSHX9ISZXZK5P5F8RFZTXV\n"
 			}
 		]
 	}
 }
 __safetyCounters = {
-	"moneySpent" : 13.049999999999997,
-	"hitsCreated" : 11
+	"moneySpent" : 14.249999999999996,
+	"hitsCreated" : 12
 }
-// end:c170
+// end:97c7
